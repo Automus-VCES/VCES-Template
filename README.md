@@ -59,4 +59,4 @@ VCES does not prescribe a programming language, framework, architecture, hosting
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+Not yet selected. See [LICENSE](LICENSE) for the current status.
