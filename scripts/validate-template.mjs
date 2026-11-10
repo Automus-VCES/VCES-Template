@@ -10,6 +10,7 @@ const required = [
   "templates/AGENTS.md", "templates/CONTRIBUTING.md", "templates/SECURITY.md",
   "templates/adr/ADR-TEMPLATE.md", "docs/ADOPTION-GUIDE.md",
   "docs/ENGINEERING-HEALTH-CHECK.md", "docs/RELEASE-PROCESS.md",
+  "docs/GITHUB-SECURITY-CONFIGURATION.md",
   ".github/workflows/ci.yml", ".github/workflows/security.yml",
   ".github/workflows/release.yml"
 ];
