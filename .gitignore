@@ -1,0 +1,22 @@
+# Local/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Logs and generated output
+*.log
+tmp/
+temp/
+coverage/
+dist/
+build/
