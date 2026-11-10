@@ -28,6 +28,7 @@ This repository is the **canonical source of truth** for universal engineering r
 | `docs/ADOPTION-GUIDE.md` | Adoption for new and existing repositories |
 | `docs/ENGINEERING-HEALTH-CHECK.md` | Evidence-based scoring and release override gates |
 | `docs/RELEASE-PROCESS.md` | Versioning, release, and maintenance |
+| `docs/GITHUB-SECURITY-CONFIGURATION.md` | GitHub security feature prerequisites and workflow permissions |
 
 ## Adoption levels
 
