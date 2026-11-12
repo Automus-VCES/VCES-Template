@@ -5,22 +5,47 @@ on:
     tags:
       - "v*"
 
-permissions:
-  contents: write
+permissions: {}
 
 jobs:
-  release:
+  validate:
+    name: Validate release candidate
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+          fetch-depth: 0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22
           package-manager-cache: false
-      - run: node scripts/validate-template.mjs
+      - name: Run validator regression tests
+        run: node --test scripts/*.test.mjs
+      - name: Validate required files and internal Markdown links
+        run: node scripts/validate-template.mjs
+      - name: Validate workflow YAML syntax
+        run: |
+          ruby -e 'require "yaml"; files = Dir.glob([".github/workflows/**/*.yml", "templates/workflows/**/*.yml", "templates/workflows/**/*.yaml", "templates/workflows/**/*.yml.example"]); abort "No workflow YAML files found" if files.empty?; files.each { |file| YAML.parse_file(file) }; puts "Parsed #{files.length} workflow YAML files."'
+      - name: Analyze workflow security with zizmor
+        uses: zizmorcore/zizmor-action@53290badfa369cb0bf7ad16342cb62c2fa47ac7b # v0.8.0
+        with:
+          advanced-security: false
+          annotations: true
+      - name: Validate release tag, standard version, and main ancestry
+        run: node scripts/validate-release.mjs "$GITHUB_REF_NAME" "$GITHUB_SHA"
+
+  publish:
+    name: Publish verified release
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
       - name: Publish GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" --generate-notes
+        run: gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --generate-notes

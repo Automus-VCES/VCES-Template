@@ -24,6 +24,7 @@ In GitHub repository Settings → Advanced Security, check the actual availabili
 - Dependency graph
 - Dependency review / GitHub Advanced Security entitlement
 - Dependabot alerts and security updates, if supported by the plan
+- Private vulnerability reporting, if the repository intends to accept confidential reports
 
 The workflow failure establishes that Dependency Review was not supported at the time of the failed run. The connected GitHub integration does not expose repository security settings for direct inspection, so an owner must confirm the settings in GitHub.
 
@@ -36,3 +37,7 @@ The workflow failure establishes that Dependency Review was not supported at the
 - Dependency Review receives read-only contents and pull-request permissions.
 
 Do not grant `security-events: write` unless a workflow intentionally uploads SARIF to GitHub code scanning and the repository supports that feature.
+
+## 5. Reusable workflow examples
+
+The starter examples pin external actions to immutable commit SHAs and set `persist-credentials: false` for checkout. The CodeQL example requests `security-events: write` only for the analysis job that uploads results. Before adoption, verify action releases, runner compatibility, selected languages, and required repository security features; Dependabot updates must be reviewed before merging.

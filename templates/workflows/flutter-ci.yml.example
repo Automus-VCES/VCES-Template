@@ -1,4 +1,4 @@
-# Match the Flutter SDK version to the repository's pinned toolchain.
+# Copy to .github/workflows/ci.yml. Set FLUTTER_VERSION to pin a project SDK version.
 name: Flutter CI
 on:
   pull_request:
@@ -10,10 +10,12 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: subosito/flutter-action@v2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          flutter-version: "3.38.6"
+          persist-credentials: false
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        with:
+          flutter-version: ${{ vars.FLUTTER_VERSION || 'stable' }}
           channel: stable
           cache: true
       - run: flutter pub get

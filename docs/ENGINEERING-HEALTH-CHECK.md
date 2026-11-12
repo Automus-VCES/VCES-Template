@@ -12,8 +12,9 @@ Scores summarize evidence; they are not certification and do not override mandat
 | 3 | Defined and generally working |
 | 4 | Consistently implemented and verified |
 | 5 | Measured, maintained, continuously improved |
+| N/A | Genuinely not applicable to this system, with documented rationale |
 
-Dimension score = rating / 5 × 100. Weighted total = sum of dimension score × weight.
+For numeric ratings, dimension score = rating / 5 × 100.
 
 ## 2. Dimensions
 
@@ -29,7 +30,17 @@ Dimension score = rating / 5 × 100. Weighted total = sum of dimension score × 
 | DevOps/release | 10% | CI, artifact integrity, approvals, rollback, reproducibility |
 | **Total** | **100%** | |
 
-## 3. Classification
+## 3. Calculation and N/A treatment
+
+For each applicable dimension, calculate its weighted points as (dimension score / 100) × dimension weight.
+
+If a dimension is genuinely not applicable, mark it **N/A**, record the rationale and evidence, and exclude its weight from the denominator. Normalize the remaining applicable weights:
+
+**Normalized score = sum(weighted points for applicable dimensions) / sum(weights for applicable dimensions) × 100**
+
+Do not mark a dimension N/A merely because evidence is missing or a check was not performed; use **Not assessed** and identify the evidence gap. At least one dimension must be applicable. N/A does not remove any relevant mandatory security, data-integrity, testing, or release gate.
+
+## 4. Classification
 
 | Weighted score | Classification |
 |---|---|
@@ -39,14 +50,15 @@ Dimension score = rating / 5 × 100. Weighted total = sum of dimension score × 
 | 50–69 | Needs improvement |
 | 0–49 | Critical |
 
-## 4. Mandatory override gates
+## 5. Mandatory override gates
 
-Mark **Not Release Ready** regardless of score if a critical vulnerability/active compromise is unresolved, critical data integrity is unsafe, mandatory tests/build failed or were not run, critical-data restore is unverified, or required deployment authorization/rollback readiness is absent. High-severity risks require documented, authorized disposition.
+Mark **Not Release Ready** regardless of score if an active compromise exists, critical data integrity is unsafe, mandatory tests/build failed or were not run, critical-data restore is unverified, or required deployment authorization/rollback readiness is absent. An unresolved critical vulnerability also blocks release unless a formally approved, scoped incident/risk exception exists under VCES Section 6. Such an exception permits only the specific release explicitly approved; it does not permit routine release during active compromise. High-severity risks require documented, authorized disposition.
 
-## 5. Evidence quality
+## 6. Evidence quality
+
 For every rating record what was inspected, evidence source, date/environment, confidence and gaps, remediation owner, and review date. Documentation claims alone do not prove implementation.
 
-## 6. Assessment worksheet
+## 7. Assessment worksheet
 
 | Dimension | Score / 100 | Weight | Weighted points | Evidence / gap |
 |---|---:|---:|---:|---|
@@ -60,4 +72,4 @@ For every rating record what was inspected, evidence source, date/environment, c
 | DevOps/release | | 10% | | |
 | **Total** | | **100%** | | |
 
-Report overall score/classification, override-gate result, top risks, remediation actions, evidence gaps, owners, and reassessment date.
+Report overall score/classification, applicable dimensions and normalized weights, override-gate result, top risks, remediation actions, evidence gaps, owners, and reassessment date.

@@ -43,10 +43,11 @@ Choose controls proportionate to risk. Do not add process, dependencies, or arch
 Requires Node.js 22 or later:
 
 ```bash
+node --test scripts/*.test.mjs
 node scripts/validate-template.mjs
 ```
 
-GitHub Actions runs this check on pull requests and pushes to the standard development branches.
+GitHub Actions also parses the repository and starter workflow YAML. The release workflow runs tests, template validation, YAML parsing, workflow security analysis, and tag/version/main-ancestry checks before publishing.
 
 ## Non-goals
 
