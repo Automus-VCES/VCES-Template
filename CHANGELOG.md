@@ -5,6 +5,8 @@ All notable changes are recorded here. VCES uses Semantic Versioning for normati
 ## [Unreleased]
 
 ### Added
+- Add a risk-based Secure Vibe Coding Checklist covering authorization, uploads, SSRF, secrets, infrastructure exposure, verification, and post-deployment checks.
+- Add explicit secure implementation and runtime controls to the canonical standard and project/agent templates.
 - Add five focused flat Markdown skills for planning, architecture, secure development, testing/debugging, and code review.
 - Add automated validation for required skill files and their core guidance sections.
 
