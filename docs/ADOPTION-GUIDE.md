@@ -12,7 +12,11 @@ Adopt VCES incrementally. Do not begin by rewriting a working project or forcing
 
 Choose based on impact, exposure, data sensitivity, and operational dependency—not repository size.
 
-## 2. Keep adoption lightweight\n\nUse only the controls that fit the app's actual impact, exposure, and data sensitivity. Basic projects do not need production infrastructure, formal threat models, exhaustive documentation, or multi-agent workflows by default. Use a skill only when its trigger applies. Do not copy every template automatically; keep only documents that the project will maintain and use.\n\n## 3. New repository
+## 2. Keep adoption lightweight
+
+Use only the controls that fit the app's actual impact, exposure, and data sensitivity. Basic projects do not need production infrastructure, formal threat models, exhaustive documentation, or multi-agent workflows by default. Use a skill only when its trigger applies. Do not copy every template automatically; keep only documents that the project will maintain and use.
+
+## 3. New repository
 
 1. Record the canonical VCES URL and adopted version.
 2. Copy `templates/PROJECT-STANDARD.md`, `PROJECT-STATUS.md`, and `AGENTS.md` to the repository root.
