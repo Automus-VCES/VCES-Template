@@ -15,8 +15,8 @@ Choose based on impact, exposure, data sensitivity, and operational dependencyâ€
 ## 2. New repository
 
 1. Record the canonical VCES URL and adopted version.
-2. Copy `templates/PROJECT-STANDARD.md`, `PROJECT-STATUS.md`, and `AGENTS.md` to the repository root.
-3. Copy and customize `CONTRIBUTING.md` and `SECURITY.md`.
+2. Copy templates/PROJECT-STANDARD.md, PROJECT-STATUS.md, and AGENTS.md to the repository root.
+3. Copy and customize CONTRIBUTING.md and SECURITY.md.
 4. Add architecture/development docs when relevant.
 5. Select and customize CI/security workflows for the actual stack.
 6. Define real commands, constraints, and approval boundaries.
@@ -41,7 +41,7 @@ Give material gaps an owner and acceptance criteria. Do not treat every recommen
 Introduce templates and automation in reviewable changes. Preserve existing behavior. Do not replace working CI or architecture merely to match an example.
 
 ### Verify
-Run actual project checks and update `PROJECT-STATUS.md` with results, blockers, and residual risks.
+Run actual project checks and update PROJECT-STATUS.md with results, blockers, and residual risks.
 
 ## 4. Document responsibilities
 - VCES: universal engineering requirements.
@@ -53,10 +53,21 @@ Run actual project checks and update `PROJECT-STATUS.md` with results, blockers,
 
 Avoid duplicating the full standard. Link to the canonical source and record its version.
 
-## 5. Keep projects current
+## 5. Workflow template configuration
+
+The starter workflows are examples, not universal drop-ins. Before copying one, confirm its action versions, runner requirements, dependency installation, and required scripts match the target project. All action references in maintained examples are pinned to immutable commit SHAs; review Dependabot updates before adoption.
+
+- Node.js: npm test and npm run build are mandatory. Add those scripts to package.json; lint and typecheck steps use --if-present only because they are optional checks. Configure the NODE_VERSION repository variable when the default Node 22 does not match the project.
+- Python: adapt dependency installation to the project's lockfile and test extras. The example installs pytest and runs compileall plus pytest. Configure PYTHON_VERSION when needed.
+- Flutter: configure FLUTTER_VERSION to pin the SDK; otherwise the example uses the stable channel.
+
+The template repository CI parses all workflow YAML and example workflow YAML. Adopting repositories should add equivalent syntax and security checks for their own workflows.
+
+## 6. Keep projects current
+
 Review VCES during planned maintenance and after material security, AI-agent, or delivery changes. Compare versions, assess changed requirements, update project controls, and record verification.
 
-## 6. Acceptance checklist
+## 7. Acceptance checklist
 - [ ] Owner, adoption level, and VCES version recorded.
 - [ ] Project Standard customized with real stack and commands.
 - [ ] Agent instructions define constraints and approvals.

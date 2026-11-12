@@ -4,9 +4,9 @@
 
 ## 1. Purpose and authority
 
-VCES defines minimum controls for planning, implementing, validating, securing, documenting, and releasing software. It is technology-agnostic. Each adopting repository MUST define its own stack, architecture, domain constraints, and operational requirements in `PROJECT-STANDARD.md`. Project rules may strengthen VCES; they must not silently weaken mandatory requirements.
+VCES defines minimum controls for planning, implementing, validating, securing, documenting, and releasing software. It is technology-agnostic. Each adopting repository MUST define its own stack, architecture, domain constraints, and operational requirements in PROJECT-STANDARD.md. Project requirements may add stricter controls; project conventions MUST NOT silently weaken VCES mandatory requirements.
 
-Use this precedence: applicable law and organizational policy; approved project security requirements; VCES mandatory requirements; project conventions. Record approved exceptions with rationale, owner, compensating controls, and review/expiry date.
+Apply this precedence: applicable law and binding organizational policy; approved project-specific security and operational requirements; VCES mandatory requirements; project conventions. Higher-level requirements may impose stricter controls but do not authorize weakening VCES. A deviation from a VCES requirement is permitted only through an explicitly authorized, documented exception where the requirement itself allows an exception or the accountable VCES owner approves it. Record scope, rationale, approver, compensating controls, and review/expiry date.
 
 ## 2. Normative language
 
@@ -67,7 +67,7 @@ Security MUST be considered throughout design, implementation, review, and opera
 - Review dependency vulnerabilities and updates.
 - Log security events without credentials or sensitive payloads.
 
-Critical vulnerabilities or active compromise block release until remediated or handled through an approved incident/risk process. High-severity findings require documented assessment and authorized disposition. Threat modeling SHOULD match system exposure and impact.
+An unresolved critical vulnerability or active compromise blocks routine release. A critical vulnerability may proceed only under a formally approved incident/risk process with an accountable decision owner, documented impact, compensating controls, explicit scope, and review/expiry; active compromise requires incident response and is not eligible for an ordinary release exception. High-severity findings require documented assessment and authorized disposition. Threat modeling SHOULD match system exposure and impact.
 
 ## 7. Data integrity, backup, and recovery
 
@@ -81,7 +81,7 @@ Measure or establish a credible baseline where feasible. Review CPU, memory, res
 
 Tests MUST be repeatable and relevant to risk. Include unit, integration, regression, acceptance, security, and performance tests as appropriate. Coverage percentages are indicators, not proof. Before release, acceptance criteria, mandatory tests/build, critical defect/security gates, migration/recovery checks, configuration, documentation, version/changelog, final diff, artifact, deployment, and rollback readiness MUST be verified.
 
-A high health score never overrides a failed mandatory gate. Exceptions require an authorized decision, rationale, compensating controls, owner, and review/expiry.
+A high health score never overrides a failed mandatory gate. Exceptions require an authorized decision, rationale, compensating controls, owner, and review/expiry. The critical-vulnerability exception process in Section 6 does not authorize release during active compromise.
 
 ## 10. Git, CI/CD, and supply chain
 
