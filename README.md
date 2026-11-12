@@ -10,7 +10,7 @@ VCES follows **Minimum Sufficient Engineering**: start with the simplest maintai
 
 1. Read the [VCES standard](VIBE-CODING-STANDARD.md).
 2. Choose an adoption level and follow the [adoption guide](docs/ADOPTION-GUIDE.md).
-3. Copy only the [project templates](templates/) that the project will actually maintain.
+3. Copy only the [project templates](templates/) that the project will actually maintain. Use the [Secure Vibe Coding Checklist](templates/SECURE-VIBE-CODING-CHECKLIST.md) during security-sensitive work.
 4. Give coding agents the repository [AGENTS.md](AGENTS.md) instructions.
 5. Use the [five focused skills](skills/) only when their triggers apply.
 6. Enable and maintain the [automated workflows](.github/workflows/) that fit the project.
@@ -27,6 +27,7 @@ VCES follows **Minimum Sufficient Engineering**: start with the simplest maintai
 | `templates/AGENTS.md` | Copy-ready AI agent instructions |
 | `templates/CONTRIBUTING.md` | Copy-ready contribution and review process |
 | `templates/SECURITY.md` | Copy-ready security policy |
+| `templates/SECURE-VIBE-CODING-CHECKLIST.md` | Risk-based security checklist for AI-assisted implementation and release |
 | `templates/adr/` | Architecture decision record template |
 | `templates/workflows/` | Node.js, Python, Flutter, and CodeQL starter workflows |
 | `docs/ADOPTION-GUIDE.md` | Adoption for new and existing repositories |
