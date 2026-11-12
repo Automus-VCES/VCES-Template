@@ -19,6 +19,12 @@ Maintain this repository as the canonical, technology-agnostic Vibe Coding Engin
 - Explain material changes and update the changelog.
 - Never claim untested compatibility.
 
+## Engineering approach
+- Apply Minimum Sufficient Engineering: choose the simplest maintainable solution that meets the actual requirement.
+- Do not add layers, abstractions, dependencies, services, tests, documents, or process steps without a concrete requirement or risk.
+- Use the five flat skills in `skills/` only when their stated trigger applies; do not run every skill for every task.
+- Keep planning and verification proportionate to change impact. Never skip relevant security, data-integrity, or regression checks merely to stay lightweight.
+
 ## Change workflow
 Inspect branch and working tree; identify affected standard, templates, docs, and workflows; make a focused change; validate required files and links with `node scripts/validate-template.mjs`; review workflow permissions; inspect the complete diff; update version/changelog where needed; report completed, verified, pending, and blocked items separately.
 
