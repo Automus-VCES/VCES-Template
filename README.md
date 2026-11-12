@@ -10,14 +10,16 @@ This repository is the **canonical source of truth** for universal engineering r
 2. Follow the [adoption guide](docs/ADOPTION-GUIDE.md).
 3. Copy and customize the [project templates](templates/).
 4. Give coding agents the repository [AGENTS.md](AGENTS.md) instructions.
-5. Enable and maintain the [automated workflows](.github/workflows/).
+5. Use the [five focused skills](skills/) only when their triggers apply.
+6. Enable and maintain the [automated workflows](.github/workflows/).
 
 ## Repository contents
 
 | Path | Purpose |
 |---|---|
 | `VIBE-CODING-STANDARD.md` | Universal engineering requirements and release gates |
-| `AGENTS.md` | AI agent instructions for this repository |
+| `AGENTS.md` | Concise AI agent instructions for this repository |
+| `skills/` | Five focused, flat Markdown skills for planning, architecture, security, testing/debugging, and review |
 | `templates/PROJECT-STANDARD.md` | Project-specific technical and quality requirements |
 | `templates/PROJECT-STATUS.md` | Evidence-based status and outstanding work |
 | `templates/AGENTS.md` | Copy-ready AI agent instructions |
@@ -36,7 +38,7 @@ This repository is the **canonical source of truth** for universal engineering r
 - **Standard:** actively maintained applications.
 - **Production:** business-critical or externally exposed systems.
 
-Choose controls proportionate to risk. Do not add process, dependencies, or architecture without a reason.
+Choose controls proportionate to risk and impact. Apply Minimum Sufficient Engineering: start simple, add complexity only for an actual requirement or evidenced risk, and use skills only when their triggers apply.
 
 ## Validate this repository
 

@@ -12,7 +12,11 @@ Adopt VCES incrementally. Do not begin by rewriting a working project or forcing
 
 Choose based on impact, exposure, data sensitivity, and operational dependencyâ€”not repository size.
 
-## 2. New repository
+## 2. Keep adoption lightweight
+
+Use only the controls that fit the app's actual impact, exposure, and data sensitivity. Basic projects do not need production infrastructure, formal threat models, exhaustive documentation, or multi-agent workflows by default. Use a skill only when its trigger applies. Do not copy every template automatically; keep only documents that the project will maintain and use. The five files under `skills/` use VCES's simple flat Markdown convention; they are repository guidance, not a claim of native compatibility with every agent's skill-discovery format.
+
+## 3. New repository
 
 1. Record the canonical VCES URL and adopted version.
 2. Copy `templates/PROJECT-STANDARD.md`, `PROJECT-STATUS.md`, and `AGENTS.md` to the repository root.
@@ -22,7 +26,7 @@ Choose based on impact, exposure, data sensitivity, and operational dependencyâ€
 6. Define real commands, constraints, and approval boundaries.
 7. Run checks and record evidence in project status.
 
-## 3. Existing repository
+## 4. Existing repository
 
 ### Baseline audit
 Inspect implementation, instructions, architecture, tests, workflows, security, data handling, releases, and Git state. Record controls already satisfied, gaps, stale/conflicting docs, critical risks, and unknowns.
@@ -43,7 +47,7 @@ Introduce templates and automation in reviewable changes. Preserve existing beha
 ### Verify
 Run actual project checks and update `PROJECT-STATUS.md` with results, blockers, and residual risks.
 
-## 4. Document responsibilities
+## 5. Document responsibilities
 - VCES: universal engineering requirements.
 - PROJECT-STANDARD: project stack, architecture, commands, and risk controls.
 - AGENTS: how agents apply both in this repository.
@@ -53,7 +57,7 @@ Run actual project checks and update `PROJECT-STATUS.md` with results, blockers,
 
 Avoid duplicating the full standard. Link to the canonical source and record its version.
 
-## 5. Workflow template configuration
+## 6. Workflow template configuration
 
 The starter workflows are examples, not universal drop-ins. Before copying one, confirm its action versions, runner requirements, dependency installation, and required scripts match the target project. All action references in maintained examples are pinned to immutable commit SHAs; review Dependabot updates before adoption.
 
@@ -63,11 +67,11 @@ The starter workflows are examples, not universal drop-ins. Before copying one, 
 
 The template repository CI parses all workflow YAML and example workflow YAML. Adopting repositories should add equivalent syntax and security checks for their own workflows.
 
-## 6. Keep projects current
+## 7. Keep projects current
 
 Review VCES during planned maintenance and after material security, AI-agent, or delivery changes. Compare versions, assess changed requirements, update project controls, and record verification.
 
-## 7. Acceptance checklist
+## 8. Acceptance checklist
 - [ ] Owner, adoption level, and VCES version recorded.
 - [ ] Project Standard customized with real stack and commands.
 - [ ] Agent instructions define constraints and approvals.

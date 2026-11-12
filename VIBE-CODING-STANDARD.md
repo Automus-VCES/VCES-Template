@@ -25,6 +25,19 @@ Apply this precedence: applicable law and binding organizational policy; approve
 9. Make changes reviewable and traceable.
 10. Separate facts, assumptions, blockers, and risks.
 
+### 3.1 Minimum sufficient engineering
+
+VCES MUST be applied proportionately. Choose the simplest solution that satisfies the actual requirement and reduces a real risk.
+
+- Start with the smallest maintainable design; add layers, abstractions, services, frameworks, dependencies, and infrastructure only when justified by a current requirement or evidenced risk.
+- Do not design for hypothetical scale, speculative future features, or fashionable patterns.
+- Select Basic, Standard, or Production controls using impact, exposure, data sensitivity, and operational dependency—not app size or developer preference.
+- Small, low-risk work MAY use a short plan and focused tests. Material changes require explicit acceptance criteria and proportionate review. High-impact or externally exposed systems require stronger security, recovery, and release controls.
+- Create ADRs only for consequential decisions. Do not create documents, tests, automation, or process steps that add no meaningful assurance.
+- Reuse existing project capabilities before adding new dependencies or services. Prefer removing unnecessary complexity when doing so is safe.
+
+**Decision test:** Does this addition satisfy an actual requirement or reduce a real risk? If not, do not add it.
+
 ## 4. Engineering lifecycle
 
 **Discover → Assess → Plan → Implement → Validate → Secure → Document → Release → Maintain**

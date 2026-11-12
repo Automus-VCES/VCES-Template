@@ -4,7 +4,14 @@ All notable changes are recorded here. VCES uses Semantic Versioning for normati
 
 ## [Unreleased]
 
+### Added
+- Add five focused flat Markdown skills for planning, architecture, secure development, testing/debugging, and code review.
+- Add automated validation for required skill files and their core guidance sections.
+
 ### Changed
+- Define Minimum Sufficient Engineering and explicit anti-overengineering decision rules.
+- Clarify that skill use, documentation, planning, and verification are triggered by need and scaled to risk.
+- Keep the existing security, release, and CI controls while prioritizing a compact personal-use workflow.
 - Clarify VCES requirement precedence and align critical-vulnerability exception handling with release override gates.
 - Add evidence-based N/A scoring with normalized weights to the engineering health assessment.
 - Strengthen repository validation with required workflow examples, Markdown link safety checks, and automated regression tests.

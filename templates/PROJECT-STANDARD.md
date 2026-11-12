@@ -22,10 +22,18 @@
 | Build / packaging | | |
 | Hosting / deployment | | |
 
-## 3. Architecture and boundaries
+## 3. Engineering level and simplicity
+- Selected level: [Basic / Standard / Production]
+- Why this level fits the app's impact, exposure, and data sensitivity:
+- Explicit complexity to avoid:
+- Additional controls required by actual risks:
+
+Start with the simplest maintainable design. Do not add architecture layers, dependencies, services, or process steps for hypothetical future needs. Mark genuinely irrelevant controls N/A with a short reason; do not treat missing evidence as N/A.
+
+## 4. Architecture and boundaries
 Describe architecture, module responsibilities, dependency direction, external services, trust boundaries, data ownership, and key constraints. Link to architecture docs and ADRs.
 
-## 4. Coding conventions
+## 5. Coding conventions
 - Formatting:
 - Lint:
 - Type/static analysis:
@@ -33,7 +41,7 @@ Describe architecture, module responsibilities, dependency direction, external s
 - Dependency policy:
 - Generated files and runtime data:
 
-## 5. Testing strategy
+## 6. Testing strategy
 
 | Test type | Tool / command | Required scope |
 |---|---|---|
@@ -47,28 +55,28 @@ Describe architecture, module responsibilities, dependency direction, external s
 
 Define critical journeys, failure scenarios, test data policy, and environment requirements.
 
-## 6. Security and privacy
+## 7. Security and privacy
 Document authentication, authorization, secret storage, input validation, encryption, dependency scanning, audit logging, privacy/retention, threat model, and required security reviews.
 
-## 7. Data integrity and recovery
+## 8. Data integrity and recovery
 Document schemas, migrations, backup scope/schedule/retention, restore verification, recovery objectives, destructive-operation approval, and rollback.
 
-## 8. Performance and reliability
+## 9. Performance and reliability
 Document workload, baselines, resource limits, database/query expectations, timeouts/retries/concurrency, monitoring, and recovery expectations.
 
-## 9. Git and review
+## 10. Git and review
 Define stable branch, short-lived branch convention, commit format, PR requirements, reviewers, required CI, merge strategy, and release tags.
 
-## 10. CI/CD and deployment
+## 11. CI/CD and deployment
 Define workflows, required checks, artifact retention, environment promotion, approvals, health checks, and rollback.
 
-## 11. AI agent constraints
+## 12. AI agent constraints
 Define instruction files, autonomous actions, approval-required actions, protected paths/data, required validation commands, and documentation expectations.
 
-## 12. Definition of Done
+## 13. Definition of Done
 Acceptance criteria satisfied; relevant checks actually run; final diff reviewed; necessary docs updated; remaining risks/blockers reported.
 
-## 13. Approved exceptions
+## 14. Approved exceptions
 
 | Requirement | Rationale | Compensating control | Approver | Review / expiry |
 |---|---|---|---|---|
