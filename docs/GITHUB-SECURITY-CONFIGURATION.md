@@ -4,7 +4,7 @@ This repository uses two different GitHub security controls. They are not interc
 
 ## 1. Workflow security analysis (always enabled)
 
-.github/workflows/security.yml runs zizmor on pull requests and pushes to main and vces/**. It statically analyzes GitHub Actions workflows and does not require GitHub Advanced Security or code-scanning upload permissions.
+`.github/workflows/security.yml` runs zizmor on pull requests and pushes to `main` and `vces/**`. It statically analyzes GitHub Actions workflows and does not require GitHub Advanced Security or code-scanning upload permissions.
 
 The action is pinned to a full commit SHA. Findings are emitted as workflow annotations/log output.
 
@@ -14,7 +14,7 @@ GitHub's Dependency Review action requires the repository's dependency graph and
 
 The dependency-review job is now gated by the repository variable:
 
-ENABLE_DEPENDENCY_REVIEW=true
+`ENABLE_DEPENDENCY_REVIEW=true`
 
 Leave the variable unset or false unless the repository owner has confirmed that Dependency Graph and the required GitHub Advanced Security feature are available and enabled. If enabled without that prerequisite, the job will fail again. This is an explicit capability gate, not a substitute for enabling the feature.
 
@@ -36,8 +36,8 @@ The workflow failure establishes that Dependency Review was not supported at the
 - Third-party actions in the security workflow are pinned to full commit SHAs.
 - Dependency Review receives read-only contents and pull-request permissions.
 
-Do not grant security-events: write unless a workflow intentionally uploads SARIF to GitHub code scanning and the repository supports that feature.
+Do not grant `security-events: write` unless a workflow intentionally uploads SARIF to GitHub code scanning and the repository supports that feature.
 
 ## 5. Reusable workflow examples
 
-The starter examples pin external actions to immutable commit SHAs and set persist-credentials: false for checkout. The CodeQL example requests security-events: write only for the analysis job that uploads results. Before adoption, verify action releases, runner compatibility, selected languages, and required repository security features; Dependabot updates must be reviewed before merging.
+The starter examples pin external actions to immutable commit SHAs and set `persist-credentials: false` for checkout. The CodeQL example requests `security-events: write` only for the analysis job that uploads results. Before adoption, verify action releases, runner compatibility, selected languages, and required repository security features; Dependabot updates must be reviewed before merging.
