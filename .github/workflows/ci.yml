@@ -27,4 +27,4 @@ jobs:
         shell: bash
         run: |
           mapfile -t workflow_files < <(find .github/workflows templates/workflows -type f \\( -name '*.yml' -o -name '*.yaml' -o -name '*.yml.example' \\) -print)
-          ruby -e 'require "yaml"; ARGV.each { |file| YAML.parse_file(file) }; puts "Parsed #{ARGV.length} workflow YAML files."' "${workflow_files[@]}"
+          ruby -e 'require "yaml"; ARGV.each { |file| YAML.parse_file(file) }; puts "Parsed #{ARGV.length} workflow YAML files."' "\${workflow_files[@]}"

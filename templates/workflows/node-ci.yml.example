@@ -1,4 +1,6 @@
-# Customize Node version and scripts to match package.json.
+# Copy to .github/workflows/ci.yml and customize required scripts for this project.
+# Required: npm test and npm run build. Remove lint/typecheck steps only when those
+# checks are not part of this project's PROJECT-STANDARD.md.
 name: Node.js CI
 on:
   pull_request:
@@ -10,13 +12,16 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          node-version: 22
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: \${{ vars.NODE_VERSION || '22' }}
           cache: npm
+          package-manager-cache: false
       - run: npm ci
       - run: npm run lint --if-present
       - run: npm run typecheck --if-present
-      - run: npm test --if-present
-      - run: npm run build --if-present
+      - run: npm test
+      - run: npm run build
