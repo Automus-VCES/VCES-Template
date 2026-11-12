@@ -15,6 +15,7 @@ export const REQUIRED_FILES = Object.freeze([
   "SECURITY.md", "CHANGELOG.md", "LICENSE",
   "templates/PROJECT-STANDARD.md", "templates/PROJECT-STATUS.md",
   "templates/AGENTS.md", "templates/CONTRIBUTING.md", "templates/SECURITY.md",
+  "templates/SECURE-VIBE-CODING-CHECKLIST.md",
   "templates/adr/ADR-TEMPLATE.md", "docs/ADOPTION-GUIDE.md",
   "docs/ENGINEERING-HEALTH-CHECK.md", "docs/RELEASE-PROCESS.md",
   "docs/GITHUB-SECURITY-CONFIGURATION.md",
