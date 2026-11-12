@@ -16,19 +16,19 @@ This repository is the **canonical source of truth** for universal engineering r
 
 | Path | Purpose |
 |---|---|
-| `VIBE-CODING-STANDARD.md` | Universal engineering requirements and release gates |
-| `AGENTS.md` | AI agent instructions for this repository |
-| `templates/PROJECT-STANDARD.md` | Project-specific technical and quality requirements |
-| `templates/PROJECT-STATUS.md` | Evidence-based status and outstanding work |
-| `templates/AGENTS.md` | Copy-ready AI agent instructions |
-| `templates/CONTRIBUTING.md` | Copy-ready contribution and review process |
-| `templates/SECURITY.md` | Copy-ready security policy |
-| `templates/adr/` | Architecture decision record template |
-| `templates/workflows/` | Node.js, Python, Flutter, and CodeQL starter workflows |
-| `docs/ADOPTION-GUIDE.md` | Adoption for new and existing repositories |
-| `docs/ENGINEERING-HEALTH-CHECK.md` | Evidence-based scoring and release override gates |
-| `docs/RELEASE-PROCESS.md` | Versioning, release, and maintenance |
-| `docs/GITHUB-SECURITY-CONFIGURATION.md` | GitHub security feature prerequisites and workflow permissions |
+| VIBE-CODING-STANDARD.md | Universal engineering requirements and release gates |
+| AGENTS.md | AI agent instructions for this repository |
+| templates/PROJECT-STANDARD.md | Project-specific technical and quality requirements |
+| templates/PROJECT-STATUS.md | Evidence-based status and outstanding work |
+| templates/AGENTS.md | Copy-ready AI agent instructions |
+| templates/CONTRIBUTING.md | Copy-ready contribution and review process |
+| templates/SECURITY.md | Copy-ready security policy |
+| templates/adr/ | Architecture decision record template |
+| templates/workflows/ | Node.js, Python, Flutter, and CodeQL starter workflows |
+| docs/ADOPTION-GUIDE.md | Adoption for new and existing repositories |
+| docs/ENGINEERING-HEALTH-CHECK.md | Evidence-based scoring and release override gates |
+| docs/RELEASE-PROCESS.md | Versioning, release, and maintenance |
+| docs/GITHUB-SECURITY-CONFIGURATION.md | GitHub security feature prerequisites and workflow permissions |
 
 ## Adoption levels
 
@@ -43,10 +43,11 @@ Choose controls proportionate to risk. Do not add process, dependencies, or arch
 Requires Node.js 22 or later:
 
 ```bash
+node --test scripts/*.test.mjs
 node scripts/validate-template.mjs
 ```
 
-GitHub Actions runs this check on pull requests and pushes to the standard development branches.
+GitHub Actions also parses the repository and starter workflow YAML. The release workflow checks tag format, the canonical VCES version, and reachability from main before publishing.
 
 ## Non-goals
 
