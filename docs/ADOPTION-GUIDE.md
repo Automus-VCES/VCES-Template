@@ -21,10 +21,11 @@ Use only the controls that fit the app's actual impact, exposure, and data sensi
 1. Record the canonical VCES URL and adopted version.
 2. Copy `templates/PROJECT-STANDARD.md`, `PROJECT-STATUS.md`, and `AGENTS.md` to the repository root.
 3. Copy and customize `CONTRIBUTING.md` and `SECURITY.md`.
-4. Add architecture/development docs when relevant.
-5. Select and customize CI/security workflows for the actual stack.
-6. Define real commands, constraints, and approval boundaries.
-7. Run checks and record evidence in project status.
+4. Copy `templates/SECURE-VIBE-CODING-CHECKLIST.md` into the project (for example as `SECURITY-CHECKLIST.md`) and use it for security-sensitive features and release reviews.
+5. Add architecture/development docs when relevant.
+6. Select and customize CI/security workflows for the actual stack.
+7. Define real commands, constraints, and approval boundaries.
+8. Run checks and record evidence in project status.
 
 ## 4. Existing repository
 
