@@ -22,7 +22,15 @@
 | Build / packaging | | |
 | Hosting / deployment | | |
 
-## 3. Engineering level and simplicity\n- Selected level: [Basic / Standard / Production]\n- Why this level fits the app's impact, exposure, and data sensitivity:\n- Explicit complexity to avoid:\n- Additional controls required by actual risks:\n\nStart with the simplest maintainable design. Do not add architecture layers, dependencies, services, or process steps for hypothetical future needs. Mark genuinely irrelevant controls N/A with a short reason; do not treat missing evidence as N/A.\n\n## 4. Architecture and boundaries
+## 3. Engineering level and simplicity
+- Selected level: [Basic / Standard / Production]
+- Why this level fits the app's impact, exposure, and data sensitivity:
+- Explicit complexity to avoid:
+- Additional controls required by actual risks:
+
+Start with the simplest maintainable design. Do not add architecture layers, dependencies, services, or process steps for hypothetical future needs. Mark genuinely irrelevant controls N/A with a short reason; do not treat missing evidence as N/A.
+
+## 4. Architecture and boundaries
 Describe architecture, module responsibilities, dependency direction, external services, trust boundaries, data ownership, and key constraints. Link to architecture docs and ADRs.
 
 ## 5. Coding conventions
