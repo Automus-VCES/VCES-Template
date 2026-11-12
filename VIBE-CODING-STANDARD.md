@@ -68,19 +68,43 @@ Document material architecture and constraints. Maintain understandable module b
 
 ## 6. Security and privacy
 
-Security MUST be considered throughout design, implementation, review, and operations. Minimum controls:
-- Keep secrets out of code, logs, artifacts, and issue reports; use approved secret storage and rotate exposed credentials.
-- Apply least privilege to users, services, tokens, and CI workflows.
-- Enforce authentication and authorization server-side.
-- Validate input and encode output for its context.
-- Use parameterized queries and safe process invocation.
-- Protect sessions, tokens, passwords, and cryptographic material.
-- Restrict file access and uploads.
-- Minimize sensitive data collection, retention, and exposure.
-- Review dependency vulnerabilities and updates.
-- Log security events without credentials or sensitive payloads.
+Security MUST be considered throughout design, implementation, review, and operations. The following controls are mandatory where applicable; project-specific implementation details belong in PROJECT-STANDARD.md.
 
-An unresolved critical vulnerability or active compromise blocks routine release. A critical vulnerability may proceed only under a formally approved incident/risk process with an accountable decision owner, documented impact, compensating controls, explicit scope, and review/expiry; active compromise requires incident response and is not eligible for an ordinary release exception. High-severity findings require documented assessment and authorized disposition. Threat modeling SHOULD match system exposure and impact.
+### 6.1 Identity, authorization, and API boundaries
+- Authentication and authorization MUST be enforced server-side for every protected operation. Frontend visibility, route guards, hidden fields, and client-supplied roles are not security controls.
+- Authorization MUST be checked for the requested object, tenant, action, and entitlement on every request. Tests MUST cover both permitted and denied access, including cross-user and cross-tenant access where applicable.
+- Administrative functions and internal APIs MUST have explicit access controls, least privilege, and auditable security events.
+
+### 6.2 Input, output, and server-side requests
+- Treat all client input, uploaded content, webhooks, imported files, third-party responses, and AI-generated code as untrusted.
+- Validate input server-side at trust boundaries; use context-appropriate output encoding, parameterized queries, and safe process invocation.
+- Server-side URL fetching MUST use an explicit destination policy. Block loopback, private, link-local, multicast, and cloud metadata destinations unless specifically required and isolated. Validate resolved IPs and every redirect; defend against DNS rebinding; apply egress restrictions and response size/time limits.
+- Avoid exposing stack traces, environment values, filesystem paths, internal addresses, credentials, or sensitive records in client errors.
+
+### 6.3 File upload and execution isolation
+- Upload endpoints MUST enforce authentication/authorization where required, size limits, generated storage names, content inspection, and an explicit allowlist of supported formats.
+- Do not trust filename extensions or client-supplied MIME types. Validate file content; re-encode images/documents where appropriate.
+- Store untrusted uploads outside executable application/web roots or in isolated object storage. Script execution MUST be disabled in upload storage. Serve files with safe content types and download policies.
+- Test that uploaded content cannot execute as server-side code and cannot overwrite application files.
+
+### 6.4 Secrets, data, and dependencies
+- Keep secrets out of source, prompts, browser bundles, logs, artifacts, fixtures, and issue reports. Use approved secret storage, narrowly scoped credentials, and rotation/revocation after suspected exposure.
+- Apply least privilege to application identities, database users, cloud roles, service accounts, CI tokens, and third-party integrations.
+- Minimize sensitive data collection, retention, and exposure. Encrypt sensitive data in transit and at rest where appropriate.
+- Review dependency provenance, vulnerabilities, lockfiles, lifecycle/install scripts, and unnecessary packages before adoption and during maintenance.
+
+### 6.5 Infrastructure, runtime, and operations
+- Databases, caches, queues, control panels, debug interfaces, and internal services MUST NOT be exposed to public networks unless explicitly required, isolated, authenticated, monitored, and approved.
+- Non-standard ports, hidden URLs, CORS restrictions, or obscurity MUST NOT substitute for network isolation and authentication.
+- Production MUST disable debug mode and default credentials, restrict management access, apply supported security updates, and use secure transport and session settings.
+- DNS records and external resources MUST be reviewed during decommissioning; remove stale records and release cloud/hosting resources safely to prevent dangling-resource takeover.
+- Security logging MUST avoid credentials and sensitive payloads. Define alerting and incident response appropriate to exposure and impact.
+
+### 6.6 Security verification and release disposition
+- Security-sensitive changes MUST include focused negative tests for denied access, invalid input, unsafe uploads, prohibited network destinations, and secret leakage as applicable.
+- Use suitable static analysis, dependency and secret scanning, configuration checks, and dynamic tests proportionate to project risk. A scan or checklist is evidence of a check, not proof of security.
+- An unresolved critical vulnerability or active compromise blocks routine release. A critical vulnerability may proceed only under a formally approved incident/risk process with an accountable decision owner, documented impact, compensating controls, explicit scope, and review/expiry; active compromise requires incident response and is not eligible for an ordinary release exception. High-severity findings require documented assessment and authorized disposition. Threat modeling SHOULD match system exposure and impact.
+- The [Secure Vibe Coding Checklist](templates/SECURE-VIBE-CODING-CHECKLIST.md) provides a practical adoption aid; it does not replace project-specific threat analysis or verification.
 
 ## 7. Data integrity, backup, and recovery
 
