@@ -56,7 +56,22 @@ Describe architecture, module responsibilities, dependency direction, external s
 Define critical journeys, failure scenarios, test data policy, and environment requirements.
 
 ## 7. Security and privacy
-Document authentication, authorization, secret storage, input validation, encryption, dependency scanning, audit logging, privacy/retention, threat model, and required security reviews.
+
+Document the controls that apply to this project's exposure, data, and impact. Mark N/A with a reason; do not leave material risks implicit.
+
+- Authentication and authorization: server-side enforcement, object/action/tenant boundaries, entitlement checks, admin access.
+- Trust boundaries and abuse cases: public APIs, webhooks, imports, external integrations, AI-generated code.
+- Input/output and database safety: validation, encoding, parameterized queries, safe process invocation.
+- File handling: allowed formats, content validation, size limits, storage isolation, non-executable upload paths.
+- URL fetching/SSRF: destination allowlist, private/loopback/link-local/metadata blocking, redirect/DNS rebinding controls, egress limits.
+- Secrets: approved storage, scope/rotation, scanning, prohibited locations (source, prompts, logs, browser bundles, artifacts).
+- Infrastructure/runtime: public ports, database/cache/admin isolation, TLS/session/debug settings, least privilege.
+- Dependencies and supply chain: lockfiles, provenance, vulnerability scanning, update policy.
+- Data privacy: classification, minimization, retention, access, encryption, audit logging.
+- Threat model and required negative security tests.
+- Incident response, exposure notification, credential revocation, and remediation owner.
+
+Use the [Secure Vibe Coding Checklist](SECURE-VIBE-CODING-CHECKLIST.md) as an adoption aid.
 
 ## 8. Data integrity and recovery
 Document schemas, migrations, backup scope/schedule/retention, restore verification, recovery objectives, destructive-operation approval, and rollback.
