@@ -16,19 +16,19 @@ This repository is the **canonical source of truth** for universal engineering r
 
 | Path | Purpose |
 |---|---|
-| VIBE-CODING-STANDARD.md | Universal engineering requirements and release gates |
-| AGENTS.md | AI agent instructions for this repository |
-| templates/PROJECT-STANDARD.md | Project-specific technical and quality requirements |
-| templates/PROJECT-STATUS.md | Evidence-based status and outstanding work |
-| templates/AGENTS.md | Copy-ready AI agent instructions |
-| templates/CONTRIBUTING.md | Copy-ready contribution and review process |
-| templates/SECURITY.md | Copy-ready security policy |
-| templates/adr/ | Architecture decision record template |
-| templates/workflows/ | Node.js, Python, Flutter, and CodeQL starter workflows |
-| docs/ADOPTION-GUIDE.md | Adoption for new and existing repositories |
-| docs/ENGINEERING-HEALTH-CHECK.md | Evidence-based scoring and release override gates |
-| docs/RELEASE-PROCESS.md | Versioning, release, and maintenance |
-| docs/GITHUB-SECURITY-CONFIGURATION.md | GitHub security feature prerequisites and workflow permissions |
+| `VIBE-CODING-STANDARD.md` | Universal engineering requirements and release gates |
+| `AGENTS.md` | AI agent instructions for this repository |
+| `templates/PROJECT-STANDARD.md` | Project-specific technical and quality requirements |
+| `templates/PROJECT-STATUS.md` | Evidence-based status and outstanding work |
+| `templates/AGENTS.md` | Copy-ready AI agent instructions |
+| `templates/CONTRIBUTING.md` | Copy-ready contribution and review process |
+| `templates/SECURITY.md` | Copy-ready security policy |
+| `templates/adr/` | Architecture decision record template |
+| `templates/workflows/` | Node.js, Python, Flutter, and CodeQL starter workflows |
+| `docs/ADOPTION-GUIDE.md` | Adoption for new and existing repositories |
+| `docs/ENGINEERING-HEALTH-CHECK.md` | Evidence-based scoring and release override gates |
+| `docs/RELEASE-PROCESS.md` | Versioning, release, and maintenance |
+| `docs/GITHUB-SECURITY-CONFIGURATION.md` | GitHub security feature prerequisites and workflow permissions |
 
 ## Adoption levels
 
@@ -47,7 +47,7 @@ node --test scripts/*.test.mjs
 node scripts/validate-template.mjs
 ```
 
-GitHub Actions also parses the repository and starter workflow YAML. The release workflow checks tag format, the canonical VCES version, and reachability from main before publishing.
+GitHub Actions also parses the repository and starter workflow YAML. The release workflow runs tests, template validation, YAML parsing, workflow security analysis, and tag/version/main-ancestry checks before publishing.
 
 ## Non-goals
 
