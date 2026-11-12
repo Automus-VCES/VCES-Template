@@ -52,7 +52,7 @@ Do not mark a dimension N/A merely because evidence is missing or a check was no
 
 ## 5. Mandatory override gates
 
-Mark **Not Release Ready** regardless of score if an unresolved critical vulnerability or active compromise exists, critical data integrity is unsafe, mandatory tests/build failed or were not run, critical-data restore is unverified, or required deployment authorization/rollback readiness is absent. A critical vulnerability exception is valid only under the formally approved incident/risk process described in VCES Section 6; it does not permit routine release during active compromise. High-severity risks require documented, authorized disposition.
+Mark **Not Release Ready** regardless of score if an active compromise exists, critical data integrity is unsafe, mandatory tests/build failed or were not run, critical-data restore is unverified, or required deployment authorization/rollback readiness is absent. An unresolved critical vulnerability also blocks release unless a formally approved, scoped incident/risk exception exists under VCES Section 6. Such an exception permits only the specific release explicitly approved; it does not permit routine release during active compromise. High-severity risks require documented, authorized disposition.
 
 ## 6. Evidence quality
 
