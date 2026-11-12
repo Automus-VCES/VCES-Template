@@ -2,6 +2,14 @@ import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+export const REQUIRED_SKILLS = Object.freeze([
+  "skills/project-planning-skill.md",
+  "skills/architecture-review-skill.md",
+  "skills/secure-development-skill.md",
+  "skills/testing-debugging-skill.md",
+  "skills/code-review-skill.md"
+]);
+
 export const REQUIRED_FILES = Object.freeze([
   "README.md", "VIBE-CODING-STANDARD.md", "AGENTS.md", "CONTRIBUTING.md",
   "SECURITY.md", "CHANGELOG.md", "LICENSE",
@@ -14,11 +22,19 @@ export const REQUIRED_FILES = Object.freeze([
   "templates/workflows/python-ci.yml.example",
   "templates/workflows/flutter-ci.yml.example",
   "templates/workflows/security-codeql.yml.example",
+  ...REQUIRED_SKILLS,
   "scripts/validate-template.mjs", "scripts/validate-template.test.mjs",
   "scripts/validate-release.mjs", "scripts/validate-release.test.mjs",
   ".github/workflows/ci.yml", ".github/workflows/security.yml",
   ".github/workflows/release.yml"
 ]);
+
+const REQUIRED_SKILL_SECTIONS = [
+  "## When to use",
+  "## Workflow",
+  "## Verification",
+  "## Avoid"
+];
 
 export async function validateTemplate(root) {
   const repositoryRoot = path.resolve(root);
@@ -30,6 +46,20 @@ export async function validateTemplate(root) {
       await access(path.join(repositoryRoot, file));
     } catch {
       errors.push("Missing required file: " + file);
+    }
+  }
+
+  for (const file of REQUIRED_SKILLS) {
+    let source;
+    try {
+      source = await readFile(path.join(repositoryRoot, file), "utf8");
+    } catch {
+      continue;
+    }
+    for (const section of REQUIRED_SKILL_SECTIONS) {
+      if (!source.includes(section)) {
+        errors.push("Missing skill section in " + file + ": " + section);
+      }
     }
   }
 
@@ -71,6 +101,7 @@ export async function validateTemplate(root) {
   return {
     errors,
     requiredCount: REQUIRED_FILES.length,
+    skillCount: REQUIRED_SKILLS.length,
     markdownCount: markdownFiles.length
   };
 }
@@ -87,6 +118,7 @@ async function main() {
 
   console.log("VCES template validation passed.");
   console.log(result.requiredCount + " required files present.");
+  console.log(result.skillCount + " flat skills checked for required sections.");
   console.log(result.markdownCount + " Markdown files checked for broken local links.");
 }
 
