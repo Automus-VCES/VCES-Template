@@ -23,13 +23,13 @@ For normative changes, explain the problem and evidence, identify affected secti
 - [ ] CI passes on release candidate.
 - [ ] Final diff reviewed.
 - [ ] Release notes explain material changes.
-- [ ] Release tag is exactly vMAJOR.MINOR.PATCH and matches the canonical version in VIBE-CODING-STANDARD.md.
-- [ ] Tagged commit is reachable from verified main history.
-- [ ] Release workflow checks pass before publication.
+- [ ] Release tag is exactly `vMAJOR.MINOR.PATCH` and matches the canonical version in `VIBE-CODING-STANDARD.md`.
+- [ ] Tagged commit is reachable from verified `main` history.
+- [ ] Release workflow tests, template validation, YAML parsing, workflow security analysis, and tag/version/ancestry checks pass before publication.
 
 ## 4. Publishing
 
-Use a protected stable branch and reviewed PR. Create a version tag such as v1.0.0 only after required checks pass. The automated release workflow validates the tag format, exact standard-version match, repository templates, and tag-commit ancestry against origin/main before publishing. A release tag on an unmerged or unrelated commit MUST fail closed. Publish release notes covering additions, changes, fixes, and migration impact.
+Use a protected stable branch and reviewed PR. Create a version tag such as `v1.0.0` only after required checks pass. The automated release workflow runs regression tests, template validation, workflow YAML parsing, zizmor analysis, and tag/version/main-ancestry verification in a read-only validation job. A separate publication job receives `contents: write` only after validation succeeds. A release tag on an unmerged or unrelated commit MUST fail closed. Publish release notes covering additions, changes, fixes, and migration impact.
 
 ## 5. Maintenance
 
