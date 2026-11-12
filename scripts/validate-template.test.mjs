@@ -30,6 +30,15 @@ test("accepts a complete template with valid skills and internal links", async (
   assert.equal(result.skillCount, 5);
 });
 
+test("requires the secure vibe coding checklist", async (t) => {
+  const root = await createFixture(t);
+  await rm(path.join(root, "templates/SECURE-VIBE-CODING-CHECKLIST.md"));
+
+  const result = await validateTemplate(root);
+
+  assert.ok(result.errors.some((error) => error.includes("SECURE-VIBE-CODING-CHECKLIST.md")));
+});
+
 test("requires all reusable workflow examples", async (t) => {
   const root = await createFixture(t);
   await rm(path.join(root, "templates/workflows/flutter-ci.yml.example"));
