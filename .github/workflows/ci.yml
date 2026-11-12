@@ -24,7 +24,5 @@ jobs:
       - name: Validate required files and internal Markdown links
         run: node scripts/validate-template.mjs
       - name: Validate workflow YAML syntax
-        shell: bash
         run: |
-          mapfile -t workflow_files < <(find .github/workflows templates/workflows -type f \\( -name '*.yml' -o -name '*.yaml' -o -name '*.yml.example' \\) -print)
-          ruby -e 'require "yaml"; ARGV.each { |file| YAML.parse_file(file) }; puts "Parsed #{ARGV.length} workflow YAML files."' "\${workflow_files[@]}"
+          ruby -e 'require "yaml"; files = Dir.glob([".github/workflows/**/*.yml", "templates/workflows/**/*.yml", "templates/workflows/**/*.yaml", "templates/workflows/**/*.yml.example"]); abort "No workflow YAML files found" if files.empty?; files.each { |file| YAML.parse_file(file) }; puts "Parsed #{files.length} workflow YAML files."'
