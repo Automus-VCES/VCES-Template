@@ -4,14 +4,16 @@ VCES is a technology-agnostic engineering standard and adoption toolkit for soft
 
 This repository is the **canonical source of truth** for universal engineering rules. Adopting repositories tailor project-specific requirements without silently weakening or contradicting the standard.
 
+VCES follows **Minimum Sufficient Engineering**: start with the simplest maintainable solution, apply controls proportionate to actual risk, and add complexity only when a real requirement or evidenced risk justifies it.
+
 ## Start here
 
-1. Read [the VCES](VIBE-CODING-STANDARD.md).
-2. Follow the [adoption guide](docs/ADOPTION-GUIDE.md).
-3. Copy and customize the [project templates](templates/).
+1. Read the [VCES standard](VIBE-CODING-STANDARD.md).
+2. Choose an adoption level and follow the [adoption guide](docs/ADOPTION-GUIDE.md).
+3. Copy only the [project templates](templates/) that the project will actually maintain.
 4. Give coding agents the repository [AGENTS.md](AGENTS.md) instructions.
 5. Use the [five focused skills](skills/) only when their triggers apply.
-6. Enable and maintain the [automated workflows](.github/workflows/).
+6. Enable and maintain the [automated workflows](.github/workflows/) that fit the project.
 
 ## Repository contents
 
@@ -38,7 +40,7 @@ This repository is the **canonical source of truth** for universal engineering r
 - **Standard:** actively maintained applications.
 - **Production:** business-critical or externally exposed systems.
 
-Choose controls proportionate to risk and impact. Apply Minimum Sufficient Engineering: start simple, add complexity only for an actual requirement or evidenced risk, and use skills only when their triggers apply.
+Choose controls proportionate to impact, exposure, data sensitivity, and operational dependency—not repository size. These levels are guidance, not rigid project categories. Do not introduce production-grade infrastructure, exhaustive documentation, or multi-agent workflows unless the project needs them.
 
 ## Validate this repository
 
@@ -55,11 +57,11 @@ GitHub Actions also parses the repository and starter workflow YAML. The release
 
 VCES does not prescribe a programming language, framework, architecture, hosting provider, branching model, or AI vendor. It does not treat a passing build as proof of correctness or authorize agents to make consequential production changes.
 
-## Version
+## Version and release status
 
-**Current standard:** 1.0.0  
-**Status:** Initial reusable baseline  
-**Change policy:** [Release process](docs/RELEASE-PROCESS.md) · [Changelog](CHANGELOG.md)
+- **Current released standard:** 1.0.0
+- **Repository changes:** Additional guidance and tooling are tracked under [Unreleased](CHANGELOG.md) until a versioned release is published.
+- **Versioning:** Normative standard releases follow Semantic Versioning. See the [release process](docs/RELEASE-PROCESS.md).
 
 ## License
 
