@@ -14,7 +14,7 @@ Choose based on impact, exposure, data sensitivity, and operational dependencyâ€
 
 ## 2. Keep adoption lightweight
 
-Use only the controls that fit the app's actual impact, exposure, and data sensitivity. Basic projects do not need production infrastructure, formal threat models, exhaustive documentation, or multi-agent workflows by default. Use a skill only when its trigger applies. Do not copy every template automatically; keep only documents that the project will maintain and use. The five files under `skills/` use VCES's simple flat Markdown convention; they are repository guidance, not a claim of native compatibility with every agent's skill-discovery format.
+Use only the controls that fit the app's actual impact, exposure, and data sensitivity. Basic projects do not need production infrastructure, formal threat models, exhaustive documentation, or multi-agent workflows by default. Use a skill only when its trigger applies. Do not copy every template automatically; keep only documents that the project will maintain and use. The five files under `skills/` provide the core engineering workflows. Domain-specific security guidance lives as flat `*-skill.md` files directly under `security/`; select only the relevant skills for the task. These are repository guidance files, not a claim of native compatibility with every agent's skill-discovery format.
 
 ## 3. New repository
 
