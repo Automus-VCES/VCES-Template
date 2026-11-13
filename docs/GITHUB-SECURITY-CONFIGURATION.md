@@ -1,6 +1,6 @@
 # GitHub Security Configuration
 
-This repository uses two different GitHub security controls. They are not interchangeable.
+This repository uses three complementary GitHub security controls. They are not interchangeable.
 
 ## 1. Workflow security analysis (always enabled)
 
@@ -12,12 +12,12 @@ The action is pinned to a full commit SHA. Findings are emitted as workflow anno
 
 The `.github/workflows/security.yml` workflow includes a stable job named **Security Automation Gate**. It runs on pull requests and pushes to `main` and `vces/**`.
 
-The gate uses the Trivy filesystem scanner to inspect repository content for:
+The gate aggregates the workflow-security analysis job and the Trivy filesystem scanner. A failed or skipped workflow-security analysis explicitly fails the aggregate gate. Trivy inspects repository content for:
 - Secret findings (`secret`)
 - Dependency vulnerabilities (`vuln`)
 - Infrastructure-as-code and configuration misconfiguration (`misconfig`)
 
-The gate fails for HIGH and CRITICAL findings, including unfixed vulnerabilities, and also fails if the scanner cannot complete. The Trivy action and Trivy scanner version are pinned. It runs with read-only contents permission, does not upload SARIF, and does not require GitHub Advanced Security. The same scan is run in the release workflow; publishing requires both release validation and the security-gate job to succeed.
+The gate fails for HIGH and CRITICAL findings, including unfixed vulnerabilities, and also fails if the scanner cannot complete. The aggregate job uses `if: always()` so an upstream workflow-analysis failure cannot make the required aggregate check appear green through a skipped job. The Trivy action and Trivy scanner version are pinned. It runs with read-only contents permission, does not upload SARIF, and does not require GitHub Advanced Security. The same scan is run in the release workflow; publishing requires both release validation and the security-gate job to succeed.
 
 The starter workflow is `templates/workflows/security-gate.yml.example`. Review exclusions and scanner configuration carefully; do not broadly suppress findings to make a build green.
 
