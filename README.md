@@ -12,7 +12,7 @@ VCES follows **Minimum Sufficient Engineering**: start with the simplest maintai
 2. Choose an adoption level and follow the [adoption guide](docs/ADOPTION-GUIDE.md).
 3. Copy only the [project templates](templates/) that the project will actually maintain. Use the [Secure Vibe Coding Checklist](templates/SECURE-VIBE-CODING-CHECKLIST.md) during security-sensitive work.
 4. Give coding agents the repository [AGENTS.md](AGENTS.md) instructions.
-5. Use the [five focused skills](skills/) only when their triggers apply.
+5. Use the [five core skills](skills/) and [focused security skills](security/) only when their triggers apply.
 6. Enable and maintain the [automated workflows](.github/workflows/) that fit the project.
 
 ## Repository contents
@@ -21,7 +21,8 @@ VCES follows **Minimum Sufficient Engineering**: start with the simplest maintai
 |---|---|
 | `VIBE-CODING-STANDARD.md` | Universal engineering requirements and release gates |
 | `AGENTS.md` | Concise AI agent instructions for this repository |
-| `skills/` | Five focused, flat Markdown skills for planning, architecture, security, testing/debugging, and review |
+| `skills/` | Five focused, flat Markdown skills for planning, architecture, baseline secure development, testing/debugging, and review |
+| `security/` | Flat, domain-specific security skills covering application, authentication, APIs, business logic, data, infrastructure, supply chain, AI, testing, and incident response |
 | `templates/PROJECT-STANDARD.md` | Project-specific technical and quality requirements |
 | `templates/PROJECT-STATUS.md` | Evidence-based status and outstanding work |
 | `templates/AGENTS.md` | Copy-ready AI agent instructions |
@@ -34,6 +35,10 @@ VCES follows **Minimum Sufficient Engineering**: start with the simplest maintai
 | `docs/ENGINEERING-HEALTH-CHECK.md` | Evidence-based scoring and release override gates |
 | `docs/RELEASE-PROCESS.md` | Versioning, release, and maintenance |
 | `docs/GITHUB-SECURITY-CONFIGURATION.md` | GitHub security feature prerequisites and workflow permissions |
+
+## Security skill selection
+
+Use the top-level `skills/secure-development-skill.md` as the baseline. Select one or more files under `security/` when the work touches that domain; they are intentionally flat files rather than nested folders. Security skills are reusable guidance, not automatic proof of compliance—apply the relevant verification steps and record evidence.
 
 ## Adoption levels
 
