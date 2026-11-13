@@ -23,6 +23,7 @@ export const REQUIRED_FILES = Object.freeze([
   "templates/workflows/python-ci.yml.example",
   "templates/workflows/flutter-ci.yml.example",
   "templates/workflows/security-codeql.yml.example",
+  "templates/workflows/security-gate.yml.example",
   ...REQUIRED_SKILLS,
   "scripts/validate-template.mjs", "scripts/validate-template.test.mjs",
   "scripts/validate-release.mjs", "scripts/validate-release.test.mjs",
