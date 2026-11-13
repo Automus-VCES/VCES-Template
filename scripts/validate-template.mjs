@@ -7,7 +7,17 @@ export const REQUIRED_SKILLS = Object.freeze([
   "skills/architecture-review-skill.md",
   "skills/secure-development-skill.md",
   "skills/testing-debugging-skill.md",
-  "skills/code-review-skill.md"
+  "skills/code-review-skill.md",
+  "security/application-security-skill.md",
+  "security/authentication-security-skill.md",
+  "security/api-security-skill.md",
+  "security/business-logic-security-skill.md",
+  "security/data-security-skill.md",
+  "security/infrastructure-security-skill.md",
+  "security/supply-chain-security-skill.md",
+  "security/ai-security-skill.md",
+  "security/security-testing-skill.md",
+  "security/incident-response-skill.md"
 ]);
 
 export const REQUIRED_FILES = Object.freeze([
