@@ -1,6 +1,6 @@
 # Security Automation Gate Implementation Plan
 
-> **For agentic workers:** Implementation completed on `feat/security-automation-gate`; steps below record the delivered scope and verification still required.
+> **For agentic workers:** Implementation is on `feat/security-automation-gate`; PR checks for the final head and branch-protection configuration remain to be verified.
 
 **Goal:** Add CI security scanning and make high/critical security findings block release readiness.
 
