@@ -20,7 +20,7 @@ Turn VCES security requirements into repeatable CI checks that fail closed on ac
 - Treat every informational scanner warning as a critical release blocker.
 
 ## Approach
-Use GitHub Actions with native, pinned scanners and explicit severity policy. Keep the existing zizmor workflow analysis. Add secret scanning and source/dependency scanning where the repository's stack supports it. Make the security gate a dependency of release validation. Keep optional GitHub-hosted code-scanning uploads and Dependency Review behind capability checks because repository entitlement is not guaranteed.
+Use GitHub Actions with a pinned Trivy filesystem scan for secrets, dependency vulnerabilities, and infrastructure misconfiguration, plus the existing pinned zizmor workflow analysis. Aggregate both under the stable `Security Automation Gate` job; use `if: always()` and explicitly fail when workflow analysis did not succeed so skipped upstream jobs cannot make the aggregate check green. Run the same Trivy scan on release candidates and require it before publishing. Keep optional GitHub-hosted code-scanning uploads and Dependency Review behind capability checks because repository entitlement is not guaranteed.
 
 ## Security policy
 - Confirmed secret findings: fail.
