@@ -43,12 +43,12 @@ test("requires a blocking security gate in CI and release workflows", async () =
   const security = await readFile(new URL("../.github/workflows/security.yml", import.meta.url), "utf8");
   const release = await readFile(new URL("../.github/workflows/release.yml", import.meta.url), "utf8");
 
-  assert.match(security, /aquasecurity\\/trivy-action@[a-f0-9]{40}/);
-  assert.match(security, /scanners:\\s*vuln,misconfig,secret/);
-  assert.match(security, /severity:\\s*CRITICAL,HIGH/);
-  assert.match(security, /exit-code:\\s*["']?1/);
-  assert.match(release, /needs:\\s*\\[validate,\\s*security-gate\\]/);
-  assert.match(release, /severity:\\s*CRITICAL,HIGH/);
+  assert.ok(security.includes("aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25"));
+  assert.ok(security.includes("scanners: vuln,misconfig,secret"));
+  assert.ok(security.includes("severity: CRITICAL,HIGH"));
+  assert.ok(security.includes('exit-code: "1"'));
+  assert.ok(release.includes("needs: [validate, security-gate]"));
+  assert.ok(release.includes("severity: CRITICAL,HIGH"));
 });
 
 test("requires all reusable workflow examples", async (t) => {
