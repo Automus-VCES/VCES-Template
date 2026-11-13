@@ -35,6 +35,7 @@ jobs:
         with:
           advanced-security: false
           annotations: true
+          version: v1.31.1
       - name: Validate release tag, standard version, and main ancestry
         run: node scripts/validate-release.mjs "$GITHUB_REF_NAME" "$GITHUB_SHA"
 
