@@ -29,7 +29,7 @@ VCES follows **Minimum Sufficient Engineering**: start with the simplest maintai
 | `templates/SECURITY.md` | Copy-ready security policy |
 | `templates/SECURE-VIBE-CODING-CHECKLIST.md` | Risk-based security checklist for AI-assisted implementation and release |
 | `templates/adr/` | Architecture decision record template |
-| `templates/workflows/` | Node.js, Python, Flutter, and CodeQL starter workflows |
+| `templates/workflows/` | Node.js, Python, Flutter, CodeQL, and security gate starter workflows |
 | `docs/ADOPTION-GUIDE.md` | Adoption for new and existing repositories |
 | `docs/ENGINEERING-HEALTH-CHECK.md` | Evidence-based scoring and release override gates |
 | `docs/RELEASE-PROCESS.md` | Versioning, release, and maintenance |
@@ -52,7 +52,7 @@ node --test scripts/*.test.mjs
 node scripts/validate-template.mjs
 ```
 
-GitHub Actions also parses the repository and starter workflow YAML. The release workflow runs tests, template validation, YAML parsing, workflow security analysis, and tag/version/main-ancestry checks before publishing.
+GitHub Actions also parses the repository and starter workflow YAML. The Security Automation Gate scans for HIGH/CRITICAL dependency, secret, and infrastructure misconfiguration findings; release publishing requires this gate to pass. Repository owners must also require the named status check in branch protection.
 
 ## Non-goals
 
