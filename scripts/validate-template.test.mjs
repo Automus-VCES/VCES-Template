@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { REQUIRED_FILES, REQUIRED_SKILLS, validateTemplate } from "./validate-template.mjs";
@@ -37,6 +37,18 @@ test("requires the secure vibe coding checklist", async (t) => {
   const result = await validateTemplate(root);
 
   assert.ok(result.errors.some((error) => error.includes("SECURE-VIBE-CODING-CHECKLIST.md")));
+});
+
+test("requires a blocking security gate in CI and release workflows", async () => {
+  const security = await readFile(new URL("../.github/workflows/security.yml", import.meta.url), "utf8");
+  const release = await readFile(new URL("../.github/workflows/release.yml", import.meta.url), "utf8");
+
+  assert.match(security, /aquasecurity\\/trivy-action@[a-f0-9]{40}/);
+  assert.match(security, /scanners:\\s*vuln,misconfig,secret/);
+  assert.match(security, /severity:\\s*CRITICAL,HIGH/);
+  assert.match(security, /exit-code:\\s*["']?1/);
+  assert.match(release, /needs:\\s*\\[validate,\\s*security-gate\\]/);
+  assert.match(release, /severity:\\s*CRITICAL,HIGH/);
 });
 
 test("requires all reusable workflow examples", async (t) => {
