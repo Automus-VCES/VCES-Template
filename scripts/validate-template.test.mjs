@@ -43,6 +43,9 @@ test("requires a blocking security gate in CI and release workflows", async () =
   const security = await readFile(new URL("../.github/workflows/security.yml", import.meta.url), "utf8");
   const release = await readFile(new URL("../.github/workflows/release.yml", import.meta.url), "utf8");
 
+  assert.ok(security.includes("needs: workflow-security"));
+  assert.ok(security.includes("if: always()"));
+  assert.ok(security.includes("needs.workflow-security.result"));
   assert.ok(security.includes("aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25"));
   assert.ok(security.includes("scanners: vuln,misconfig,secret"));
   assert.ok(security.includes("severity: CRITICAL,HIGH"));
