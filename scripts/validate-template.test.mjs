@@ -42,6 +42,7 @@ test("requires the secure vibe coding checklist", async (t) => {
 test("requires a blocking security gate in CI and release workflows", async () => {
   const security = await readFile(new URL("../.github/workflows/security.yml", import.meta.url), "utf8");
   const release = await readFile(new URL("../.github/workflows/release.yml", import.meta.url), "utf8");
+  const starter = await readFile(new URL("../templates/workflows/security-gate.yml.example", import.meta.url), "utf8");
 
   assert.ok(security.includes("needs: workflow-security"));
   assert.ok(security.includes("version: v1.31.1"));
@@ -54,6 +55,9 @@ test("requires a blocking security gate in CI and release workflows", async () =
   assert.ok(release.includes("version: v1.31.1"));
   assert.ok(release.includes("needs: [validate, security-gate]"));
   assert.ok(release.includes("severity: CRITICAL,HIGH"));
+  assert.ok(starter.includes("needs: workflow-security"));
+  assert.ok(starter.includes("version: v1.31.1"));
+  assert.ok(starter.includes("severity: CRITICAL,HIGH"));
 });
 
 test("requires all reusable workflow examples", async (t) => {
