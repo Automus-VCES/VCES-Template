@@ -66,7 +66,7 @@ The starter workflows are examples, not universal drop-ins. Before copying one, 
 - Python: adapt dependency installation to the project's lockfile and test extras. The example installs pytest and runs compileall plus pytest. Configure `PYTHON_VERSION` when needed.
 - Flutter: configure `FLUTTER_VERSION` to pin the SDK; otherwise the example uses the stable channel.
 
-The template repository CI parses all workflow YAML and example workflow YAML. Adopting repositories should add equivalent syntax and security checks for their own workflows.
+The template repository CI parses all workflow YAML and example workflow YAML. Adopt `templates/workflows/security-gate.yml.example` as `.github/workflows/security-gate.yml` and make **Security Automation Gate** a required status check in branch protection. The gate scans secrets, dependencies, and supported infrastructure configuration for HIGH and CRITICAL findings and fails closed on scanner errors. Tune severity and exclusions only through reviewed, documented policy changes. Adopting repositories should add equivalent syntax and security checks for their own workflows.
 
 ## 7. Keep projects current
 
