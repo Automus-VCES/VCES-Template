@@ -5,6 +5,8 @@ All notable changes are recorded here. VCES uses Semantic Versioning for normati
 ## [Unreleased]
 
 ### Added
+- Add a Trivy-based Security Automation Gate for HIGH/CRITICAL dependency, secret, and infrastructure misconfiguration findings; scanner errors fail closed.
+- Require the security gate to pass before release publication and add a reusable starter workflow plus regression checks.
 - Add a risk-based Secure Vibe Coding Checklist covering authorization, uploads, SSRF, secrets, infrastructure exposure, verification, and post-deployment checks.
 - Add explicit secure implementation and runtime controls to the canonical standard and project/agent templates.
 - Add five focused flat Markdown skills for planning, architecture, secure development, testing/debugging, and code review.
