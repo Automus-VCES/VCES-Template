@@ -6,7 +6,7 @@ This repository uses three complementary GitHub security controls. They are not 
 
 `.github/workflows/security.yml` runs zizmor on pull requests and pushes to `main` and `vces/**`. It statically analyzes GitHub Actions workflows and does not require GitHub Advanced Security or code-scanning upload permissions.
 
-The action is pinned to a full commit SHA. Findings are emitted as workflow annotations/log output.
+The action is pinned to a full commit SHA, and the zizmor scanner binary version is pinned explicitly. Findings are emitted as workflow annotations/log output.
 
 ## 2. Security Automation Gate (always enabled)
 
