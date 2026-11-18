@@ -35,12 +35,35 @@ jobs:
         with:
           advanced-security: false
           annotations: true
+          version: v1.31.1
       - name: Validate release tag, standard version, and main ancestry
         run: node scripts/validate-release.mjs "$GITHUB_REF_NAME" "$GITHUB_SHA"
 
+  security-gate:
+    name: Security Automation Gate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout release candidate
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Scan source, dependencies, secrets, and infrastructure configuration
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          scanners: vuln,misconfig,secret
+          severity: CRITICAL,HIGH
+          ignore-unfixed: false
+          exit-code: "1"
+          format: table
+          version: v0.76.2
+
   publish:
     name: Publish verified release
-    needs: validate
+    needs: [validate, security-gate]
     runs-on: ubuntu-latest
     permissions:
       contents: write
