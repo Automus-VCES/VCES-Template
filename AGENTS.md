@@ -25,15 +25,38 @@ Maintain this repository as the canonical, technology-agnostic Vibe Coding Engin
 - Skills are supporting guidance, not mandatory rituals. Automatically select and read only relevant skills; do not ask users to choose them.
 - Keep planning and verification proportionate to change impact. Never skip relevant security, data-integrity, or regression checks merely to stay lightweight.
 
-### Core skill triggers
-- Planning: new project, material feature, unclear requirements, or meaningful risk/scope.
-- Architecture: stack/data-model choice, major integration, boundary changes, structural complexity.
-- Secure development: baseline for implementation; deepen for trust boundaries, sensitive data, auth, uploads, integrations, or deployment.
-- Testing/debugging: behavior changes, defects, regression, data handling, release verification.
-- Code review: meaningful implementation, merge/release; use a brief self-review for tiny changes.
+### User-first request handling
+Classify natural-language requests automatically; users do not need special commands:
+- **Build/change:** understand outcome, inspect context, clarify only essentials, choose safe project-consistent defaults, implement, verify, review.
+- **Audit/review:** inspect and report evidence-based findings; do not change audited files unless remediation is requested.
+- **Fix/debug:** establish evidence, find root cause, make the smallest coherent fix, add regression coverage, verify.
+- **Explain/advise:** explain observed state, reason, impact, and recommendation; do not make unrequested changes.
 
-### Specialized security skill triggers
-Use only the domain skill(s) that match the change: application/input/file/URL handling; authentication/session/account recovery; APIs/webhooks; business workflows/payments/entitlements; sensitive data/exports/retention/backups; infrastructure/network/cloud/runtime; dependencies/CI/release supply chain; AI/RAG/tools/agents; security testing; or incident response.
+Ask only questions that materially affect correctness, safety, scope, or irreversible decisions. Keep plans and explanations proportional. Surface material risks and approval needs in plain language.
+
+### Core skill selection map
+Open only relevant files. If the platform does not auto-load Markdown skills, explicitly read the repository file; never claim a skill was loaded unless read.
+- `skills/project-planning-skill.md`: new project, substantial feature, unclear scope, material risk.
+- `skills/architecture-review-skill.md`: stack/data model, boundaries, major integration, structural decision.
+- `skills/secure-development-skill.md`: baseline implementation; deepen for trust boundaries, auth, sensitive data, uploads, integrations, deployment.
+- `skills/testing-debugging-skill.md`: defects, behavior changes, regression, verification.
+- `skills/code-review-skill.md`: meaningful changes, security-sensitive work, pre-merge/release review.
+
+### Specialized security skill selection map
+Use only matching domain files; combine only when a task crosses domains:
+- `security/application-security-skill.md`: input/output, injection, uploads, SSRF.
+- `security/authentication-security-skill.md`: identity, sessions, passwords, MFA, recovery.
+- `security/api-security-skill.md`: API authorization, tokens, rate limits, webhooks.
+- `security/business-logic-security-skill.md`: payments, pricing, workflows, entitlements.
+- `security/data-security-skill.md`: sensitive data, database access, exports, retention, backups.
+- `security/infrastructure-security-skill.md`: cloud, network, DNS, runtime, hosting, containers.
+- `security/supply-chain-security-skill.md`: dependencies, package scripts, CI/CD, build provenance.
+- `security/ai-security-skill.md`: LLMs, agents, tools, RAG, prompt injection.
+- `security/security-testing-skill.md`: security test design, scanning, verification.
+- `security/incident-response-skill.md`: suspected compromise, containment, recovery.
+
+### Audit output
+Each finding includes severity (Critical/High/Medium/Low/Informational), finding, evidence, impact, recommended fix, and confidence/status (Confirmed/Suspected/Not verified). Order by severity and impact; disclose audit scope and checks not run.
 
 ## Change workflow
 Inspect branch and working tree; identify affected standard, templates, docs, and workflows; make a focused change; validate required files and links with `node scripts/validate-template.mjs`; review workflow permissions; inspect the complete diff; update version/changelog where needed; report completed, verified, pending, and blocked items separately.
