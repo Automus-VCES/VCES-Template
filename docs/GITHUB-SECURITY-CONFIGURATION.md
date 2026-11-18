@@ -1,43 +1,53 @@
 # GitHub Security Configuration
 
-This repository uses two different GitHub security controls. They are not interchangeable.
+VCES uses complementary security controls. They are not interchangeable, and a passing scan is not a security certification.
 
-## 1. Workflow security analysis (always enabled)
+## 1. Always-on workflow security and security gate
 
-`.github/workflows/security.yml` runs zizmor on pull requests and pushes to `main` and `vces/**`. It statically analyzes GitHub Actions workflows and does not require GitHub Advanced Security or code-scanning upload permissions.
+`.github/workflows/security.yml` runs zizmor on pull requests and pushes to `main` and `vces/**`. The workflow includes a stable job named **Security Automation Gate** that aggregates zizmor and Trivy filesystem scanning.
 
-The action is pinned to a full commit SHA. Findings are emitted as workflow annotations/log output.
+Trivy scans repository content for:
+- Secrets (`secret`)
+- Dependency vulnerabilities (`vuln`)
+- Infrastructure-as-code and configuration misconfiguration (`misconfig`)
 
-## 2. Dependency Review (optional; requires GitHub support)
+HIGH and CRITICAL findings block the gate. Unfixed findings are not silently ignored. Scanner errors fail the job. The aggregate gate uses `if: always()` and explicitly fails when workflow-security analysis did not succeed, so an upstream failure or skip cannot appear green through job skipping.
 
-GitHub's Dependency Review action requires the repository's dependency graph and GitHub Advanced Security entitlement/configuration. The previous workflow failed because GitHub explicitly reported that Dependency Review was unsupported for this repository.
+The action references and scanner versions are pinned. Jobs use read-only permissions and checkout does not persist credentials. No GitHub Advanced Security entitlement is required for this baseline.
 
-The dependency-review job is now gated by the repository variable:
+**Coverage limitation:** Trivy can only scan ecosystems and configuration formats it recognizes. This template repository may not contain application lockfiles or infrastructure definitions, so those scanner categories can report no supported files. That is not evidence that an adopting application is vulnerability-free. Confirm scan output lists the expected manifests, lockfiles, and infrastructure files. A missing expected file or unsupported ecosystem is a coverage gap; the adopting project must add an appropriate scanner.
 
-`ENABLE_DEPENDENCY_REVIEW=true`
+## 2. Release enforcement
 
-Leave the variable unset or false unless the repository owner has confirmed that Dependency Graph and the required GitHub Advanced Security feature are available and enabled. If enabled without that prerequisite, the job will fail again. This is an explicit capability gate, not a substitute for enabling the feature.
+The release workflow runs the same HIGH/CRITICAL Trivy scan against the tagged release candidate. The publish job explicitly depends on both `validate` and `security-gate`; a failed or skipped prerequisite blocks publication.
 
-## 3. Repository owner verification
+## 3. Reusable starter workflow
 
-In GitHub repository Settings → Advanced Security, check the actual availability and state of:
-- Dependency graph
-- Dependency review / GitHub Advanced Security entitlement
-- Dependabot alerts and security updates, if supported by the plan
-- Private vulnerability reporting, if the repository intends to accept confidential reports
+Copy `templates/workflows/security-gate.yml.example` to `.github/workflows/security-gate.yml` and review it for the project's actual languages, manifests, lockfiles, infrastructure, and threat model. Do not broaden exclusions or lower severity thresholds merely to obtain a green build. Record accepted risk with an owner, rationale, scope, and expiry.
 
-The workflow failure establishes that Dependency Review was not supported at the time of the failed run. The connected GitHub integration does not expose repository security settings for direct inspection, so an owner must confirm the settings in GitHub.
+## 4. Required branch protection (owner action)
 
-## 4. Least-privilege workflow policy
+A workflow file does not enforce branch protection. In GitHub repository Settings → Rules → Rulesets (or Branches → branch protection rules), configure the default branch to:
+- Require a pull request before merging.
+- Require the **Security Automation Gate** status check.
+- Require the repository template-validation CI check.
+- Require branches to be up to date before merging where practical.
+- Restrict force pushes and deletion.
 
-- Workflow-level permissions default to none in the security workflow.
-- Each job declares only the permissions it needs.
-- Checkout does not persist the token in the local Git configuration.
-- Third-party actions in the security workflow are pinned to full commit SHAs.
-- Dependency Review receives read-only contents and pull-request permissions.
+The connected GitHub integration used for this implementation does not expose branch-protection read/write operations. Repository owners must configure and verify these rules in GitHub settings. Until then, the workflow runs but the default branch is not protected by this required-check policy.
 
-Do not grant `security-events: write` unless a workflow intentionally uploads SARIF to GitHub code scanning and the repository supports that feature.
+## 5. Optional Dependency Review
 
-## 5. Reusable workflow examples
+The Dependency Review action is conditional on `ENABLE_DEPENDENCY_REVIEW=true` and requires GitHub dependency graph / supported Advanced Security capability. Keep it disabled unless the repository owner has confirmed the feature is available and enabled. The baseline Trivy scan does not depend on this optional GitHub capability.
 
-The starter examples pin external actions to immutable commit SHAs and set `persist-credentials: false` for checkout. The CodeQL example requests `security-events: write` only for the analysis job that uploads results. Before adoption, verify action releases, runner compatibility, selected languages, and required repository security features; Dependabot updates must be reviewed before merging.
+## 6. Repository owner verification
+
+Review Settings → Advanced Security for dependency graph, Dependabot alerts/security updates (if supported), and private vulnerability reporting (if desired). The workflow does not claim these settings are enabled; verify them directly in GitHub.
+
+## 7. Least-privilege policy
+
+- Workflow-level permissions default to none.
+- Each job grants only the permissions it needs.
+- Checkout uses `persist-credentials: false`.
+- Third-party actions are pinned to immutable full commit SHAs.
+- Do not grant `security-events: write` unless a workflow intentionally uploads SARIF and the repository supports that feature.

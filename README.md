@@ -50,7 +50,7 @@ node --test scripts/*.test.mjs
 node scripts/validate-template.mjs
 ```
 
-GitHub Actions also parses repository and starter workflow YAML. The release workflow runs tests, validation, YAML parsing, workflow security analysis, and tag/version/main-ancestry checks before publishing.
+GitHub Actions also parses repository and starter workflow YAML. The Security Automation Gate scans for HIGH/CRITICAL dependency, secret, and infrastructure misconfiguration findings; release publication requires this gate to pass. Repository owners must require **Security Automation Gate** in default-branch protection; see [GitHub security configuration](docs/GITHUB-SECURITY-CONFIGURATION.md).
 
 ## Non-goals
 

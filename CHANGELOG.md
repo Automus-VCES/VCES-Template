@@ -4,13 +4,19 @@ All notable changes are recorded here. VCES uses Semantic Versioning for normati
 
 ## [Unreleased]
 
+### Added
+- Add an always-on Security Automation Gate combining zizmor workflow analysis and Trivy filesystem scanning for HIGH/CRITICAL secret, dependency, and infrastructure misconfiguration findings.
+- Require the security gate to pass before release publication and add a reusable starter workflow.
+
+### Changed
+- Document scanner coverage limitations, optional GitHub Dependency Review capability, and the required default-branch protection owner action.
+
 ### Changed
 - Make separate PROJECT-STANDARD.md optional; project-specific requirements may live in existing project documentation or agent instructions.
 - Define automatic Build, Audit, Fix, and Explain workflows with clear boundaries between review and remediation.
 - Add explicit core and domain security skill filename-to-trigger mapping, including fallback guidance for agents that do not auto-load Markdown skills.
 - Standardize audit finding severity, evidence, impact, remediation, and confidence/status reporting.
 - Add user-first interaction rules: ask only essential questions, choose safe technical defaults, and keep plans and explanations proportionate.
-
 
 ### Changed
 - Clarify that adoption templates, checklists, health assessments, and CI/security workflows are optional and project-tailored.
