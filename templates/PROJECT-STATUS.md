@@ -1,6 +1,6 @@
 # Project Status
 
-> Evidence-based snapshot. Update after substantial work and before releases. Do not use this instead of issue tracking.
+> Optional evidence-based snapshot. Use for substantial projects, releases, or when status tracking provides value. Update when needed; do not maintain a status document for its own sake. This is not a replacement for issue tracking.
 
 - Project / repository:
 - Updated:
