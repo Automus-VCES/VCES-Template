@@ -4,12 +4,18 @@ All notable changes are recorded here. VCES uses Semantic Versioning for normati
 
 ## [Unreleased]
 
+### Changed
+- Clarify the practical Build and Audit paths so users can state an outcome while agents select proportionate engineering steps automatically.
+- Make templates, separate project documents, scanners, CI, and branch-protection policies explicitly optional unless a project-specific need justifies them.
+- Remove the VCES repository's blocking Trivy filesystem gate and release dependency; retain focused template validation and GitHub Actions workflow analysis for repository maintenance.
+- Align README, adoption, security, and release guidance with VCES as a reusable engineering Standard rather than a mandatory toolchain.
+
+
 ### Added
-- Add an always-on Security Automation Gate combining zizmor workflow analysis and Trivy filesystem scanning for HIGH/CRITICAL secret, dependency, and infrastructure misconfiguration findings.
-- Require the security gate to pass before release publication and add a reusable starter workflow.
+- Keep an optional application security scanning workflow example for adopters to tailor to their technology and risk.
 
 ### Changed
-- Document scanner coverage limitations, optional GitHub Dependency Review capability, and the required default-branch protection owner action.
+- Document optional GitHub security settings and Dependency Review capability without making branch protection a VCES prerequisite.
 
 ### Changed
 - Make separate PROJECT-STANDARD.md optional; project-specific requirements may live in existing project documentation or agent instructions.
@@ -33,13 +39,13 @@ All notable changes are recorded here. VCES uses Semantic Versioning for normati
 ### Changed
 - Define Minimum Sufficient Engineering and explicit anti-overengineering decision rules.
 - Clarify that skill use, documentation, planning, and verification are triggered by need and scaled to risk.
-- Keep the existing security, release, and CI controls while prioritizing a compact personal-use workflow.
+- Keep repository validation and workflow analysis proportionate to maintaining the Standard; application scanning and branch protection remain project-specific choices.
 - Clarify VCES requirement precedence and align critical-vulnerability exception handling with release override gates.
 - Add evidence-based N/A scoring with normalized weights to the engineering health assessment.
 - Strengthen repository validation with required workflow examples, Markdown link safety checks, and automated regression tests.
 - Harden reusable Node.js, Python, Flutter, and CodeQL workflows with configurable toolchains and immutable action pins.
 - Validate workflow YAML syntax in CI and require Node test/build scripts in the Node.js starter.
-- Gate releases on canonical SemVer tag matching and verified main-branch ancestry.
+- Validate VCES releases against canonical SemVer tags and verified main-branch ancestry.
 - Clarify private vulnerability reporting setup and maintainer responsibilities.
 
 ## [1.0.0] - 2026-11-11
