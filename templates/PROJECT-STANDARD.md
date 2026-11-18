@@ -1,6 +1,6 @@
 # Project Engineering Standard
 
-> Copy to the repository root as `PROJECT-STANDARD.md`. Replace bracketed prompts and remove genuinely irrelevant sections. Do not weaken VCES without an approved exception.
+> Optional project document. Copy to the repository root as `PROJECT-STANDARD.md` only if project-specific requirements need a durable home. Replace prompts, keep relevant sections, and delete or mark irrelevant sections N/A with a short reason. Do not weaken VCES without an approved exception.
 
 ## 1. Identity and scope
 - Project / repository:
@@ -31,7 +31,7 @@
 Start with the simplest maintainable design. Do not add architecture layers, dependencies, services, or process steps for hypothetical future needs. Mark genuinely irrelevant controls N/A with a short reason; do not treat missing evidence as N/A.
 
 ## 4. Architecture and boundaries
-Describe architecture, module responsibilities, dependency direction, external services, trust boundaries, data ownership, and key constraints. Link to architecture docs and ADRs.
+Describe only architecture, module responsibilities, dependency direction, external services, trust boundaries, data ownership, and constraints that need recording. Link to architecture docs or ADRs if maintained.
 
 ## 5. Coding conventions
 - Formatting:
@@ -53,11 +53,11 @@ Describe architecture, module responsibilities, dependency direction, external s
 | Performance | | |
 | Build / package | | |
 
-Define critical journeys, failure scenarios, test data policy, and environment requirements.
+Define only the critical journeys, failure scenarios, test data policy, and environment requirements that matter.
 
 ## 7. Security and privacy
 
-Document the controls that apply to this project's exposure, data, and impact. Mark N/A with a reason; do not leave material risks implicit.
+Document applicable controls for the project's exposure, data, and impact. Mark N/A with a reason; do not leave material risks implicit.
 
 - Authentication and authorization: server-side enforcement, object/action/tenant boundaries, entitlement checks, admin access.
 - Trust boundaries and abuse cases: public APIs, webhooks, imports, external integrations, AI-generated code.
@@ -71,19 +71,19 @@ Document the controls that apply to this project's exposure, data, and impact. M
 - Threat model and required negative security tests.
 - Incident response, exposure notification, credential revocation, and remediation owner.
 
-Use the [Secure Vibe Coding Checklist](SECURE-VIBE-CODING-CHECKLIST.md) as an adoption aid.
+Use the [Secure Vibe Coding Checklist](SECURE-VIBE-CODING-CHECKLIST.md) if a focused security review checklist is useful; it is not mandatory for every project.
 
 ## 8. Data integrity and recovery
-Document schemas, migrations, backup scope/schedule/retention, restore verification, recovery objectives, destructive-operation approval, and rollback.
+If the project stores important data, document schemas, migrations, backup scope/schedule/retention, restore verification, recovery objectives, destructive-operation approval, and rollback.
 
 ## 9. Performance and reliability
-Document workload, baselines, resource limits, database/query expectations, timeouts/retries/concurrency, monitoring, and recovery expectations.
+Record workload, baselines, resource limits, database/query expectations, timeouts/retries/concurrency, monitoring, and recovery expectations only as needed.
 
 ## 10. Git and review
-Define stable branch, short-lived branch convention, commit format, PR requirements, reviewers, required CI, merge strategy, and release tags.
+Define branch/commit/review conventions only if the team needs them.
 
 ## 11. CI/CD and deployment
-Define workflows, required checks, artifact retention, environment promotion, approvals, health checks, and rollback.
+Document workflows, required checks, artifact retention, environment promotion, approvals, health checks, and rollback when applicable.
 
 ## 12. AI agent constraints
 Define instruction files, autonomous actions, approval-required actions, protected paths/data, required validation commands, and documentation expectations.
