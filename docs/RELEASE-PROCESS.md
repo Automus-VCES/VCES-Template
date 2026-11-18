@@ -1,5 +1,7 @@
 # VCES Release and Maintenance Process
 
+This process governs releases of the VCES Standard itself. It is not a release checklist that every project adopting VCES must copy.
+
 ## 1. Versioning
 
 VCES uses Semantic Versioning for normative requirements:
@@ -13,24 +15,22 @@ Template-only changes may use a patch release unless they materially change adop
 
 For normative changes, explain the problem and evidence, identify affected sections/adopters, assess security/compatibility/migration impact, propose exact wording, obtain maintainer review, update changelog/version, and publish migration guidance when material.
 
-## 3. Release checklist
+## 3. Release checks
 
-- [ ] Standard and templates are consistent.
-- [ ] Required files and internal links validate.
-- [ ] Workflow syntax and permissions reviewed.
-- [ ] Adoption docs and version references updated.
-- [ ] Changelog updated.
-- [ ] CI passes on release candidate.
-- [ ] Final diff reviewed.
-- [ ] Release notes explain material changes.
-- [ ] Release tag is exactly `vMAJOR.MINOR.PATCH` and matches the canonical version in `VIBE-CODING-STANDARD.md`.
-- [ ] Tagged commit is reachable from verified `main` history.
-- [ ] Release workflow tests, template validation, YAML parsing, workflow security analysis, and tag/version/ancestry checks pass before publication.
+Before publishing a VCES version, verify:
+- Standard, instructions, skills, templates, and adoption documentation are consistent.
+- Required files, internal links, regression tests, and workflow YAML validate.
+- GitHub Actions workflow analysis passes.
+- Changelog and version references are current.
+- The final diff and release notes are reviewed.
+- The tag is exactly `vMAJOR.MINOR.PATCH`, matches the canonical Standard version, and points to a commit reachable from verified `main` history.
+
+These are checks for publishing this repository's Standard. They do not imply that every adopting application needs this repository's release tooling or the same workflow.
 
 ## 4. Publishing
 
-Use a protected stable branch and reviewed PR. Create a version tag such as `v1.0.0` only after required checks pass. The automated release workflow runs regression tests, template validation, workflow YAML parsing, zizmor analysis, and tag/version/main-ancestry verification in a read-only validation job. A separate publication job receives `contents: write` only after validation succeeds. A release tag on an unmerged or unrelated commit MUST fail closed. Publish release notes covering additions, changes, fixes, and migration impact.
+Use a reviewed change to the stable branch. Create a version tag only after the repository's validation checks pass. The automated release workflow validates regression tests, template structure and links, workflow YAML, workflow security, and tag/version/main ancestry before publishing. The publication job receives write permission only after validation succeeds. A release tag on an unmerged or unrelated commit MUST fail closed.
 
 ## 5. Maintenance
 
-Review at least annually and after major security/supply-chain incidents, material AI-agent changes, repeated adoption problems, platform changes, or significant user feedback. Keep older versions accessible and mark support status clearly.
+Review the Standard when adoption feedback, material security incidents, AI-agent behavior, or engineering practices indicate that requirements need clarification. Keep older versions accessible and mark support status clearly. Avoid process changes that do not improve the Standard or its adoption.
