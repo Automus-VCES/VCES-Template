@@ -10,35 +10,28 @@ VCES follows **Minimum Sufficient Engineering**: start with the simplest maintai
 
 1. Read the [VCES standard](VIBE-CODING-STANDARD.md).
 2. Choose an adoption level and follow the [adoption guide](docs/ADOPTION-GUIDE.md).
-3. Copy only the [project templates](templates/) that the project will actually maintain. Use the [Secure Vibe Coding Checklist](templates/SECURE-VIBE-CODING-CHECKLIST.md) during security-sensitive work.
-4. Give coding agents the repository [AGENTS.md](AGENTS.md) instructions.
-5. Use the [five core skills](skills/) and [focused security skills](security/) only when their triggers apply.
-6. Enable and maintain the [automated workflows](.github/workflows/) that fit the project.
+3. Add only the project instructions and templates that will actually be useful and maintained.
+4. Give coding agents the repository `AGENTS.md` instructions; let the agent select relevant skills automatically based on the task.
+5. Use the [core skills](skills/) and [focused security skills](security/) when their triggers apply; they are guidance, not a requirement to read every file for every task.
+6. Add CI, security scanning, and starter workflows only when they provide useful checks for that project.
 
 ## Repository contents
 
 | Path | Purpose |
 |---|---|
 | `VIBE-CODING-STANDARD.md` | Universal engineering requirements and release gates |
-| `AGENTS.md` | Concise AI agent instructions for this repository |
+| `AGENTS.md` | AI agent instructions for maintaining and applying VCES |
 | `skills/` | Five focused, flat Markdown skills for planning, architecture, baseline secure development, testing/debugging, and review |
-| `security/` | Flat, domain-specific security skills covering application, authentication, APIs, business logic, data, infrastructure, supply chain, AI, testing, and incident response |
-| `templates/PROJECT-STANDARD.md` | Project-specific technical and quality requirements |
-| `templates/PROJECT-STATUS.md` | Evidence-based status and outstanding work |
-| `templates/AGENTS.md` | Copy-ready AI agent instructions |
-| `templates/CONTRIBUTING.md` | Copy-ready contribution and review process |
-| `templates/SECURITY.md` | Copy-ready security policy |
-| `templates/SECURE-VIBE-CODING-CHECKLIST.md` | Risk-based security checklist for AI-assisted implementation and release |
-| `templates/adr/` | Architecture decision record template |
-| `templates/workflows/` | Node.js, Python, Flutter, and CodeQL starter workflows |
-| `docs/ADOPTION-GUIDE.md` | Adoption for new and existing repositories |
-| `docs/ENGINEERING-HEALTH-CHECK.md` | Evidence-based scoring and release override gates |
-| `docs/RELEASE-PROCESS.md` | Versioning, release, and maintenance |
-| `docs/GITHUB-SECURITY-CONFIGURATION.md` | GitHub security feature prerequisites and workflow permissions |
+| `security/` | Flat, domain-specific security guidance; consult only the domains relevant to the work |
+| `templates/` | Optional, copy-ready project documents, checklist, ADR, and workflow examples |
+| `docs/ADOPTION-GUIDE.md` | Proportionate adoption for new and existing repositories |
+| `docs/ENGINEERING-HEALTH-CHECK.md` | Optional evidence-based assessment; not a required workflow |
+| `docs/RELEASE-PROCESS.md` | Versioning and release guidance |
+| `docs/GITHUB-SECURITY-CONFIGURATION.md` | GitHub security configuration guidance |
 
-## Security skill selection
+## Skill selection
 
-Use the top-level `skills/secure-development-skill.md` as the baseline. Select one or more files under `security/` when the work touches that domain; they are intentionally flat files rather than nested folders. Security skills are reusable guidance, not automatic proof of compliance—apply the relevant verification steps and record evidence.
+The baseline standard and project instructions are always applicable. Agents should automatically choose only the relevant skills from task triggers; users should not need to know or manually invoke a skill. The core secure-development skill is the baseline; specialized security skills add focused guidance when their domain is touched.
 
 ## Adoption levels
 
@@ -46,7 +39,7 @@ Use the top-level `skills/secure-development-skill.md` as the baseline. Select o
 - **Standard:** actively maintained applications.
 - **Production:** business-critical or externally exposed systems.
 
-Choose controls proportionate to impact, exposure, data sensitivity, and operational dependency—not repository size. These levels are guidance, not rigid project categories. Do not introduce production-grade infrastructure, exhaustive documentation, or multi-agent workflows unless the project needs them.
+Choose controls proportionate to impact, exposure, data sensitivity, and operational dependency—not repository size. These levels are guidance, not rigid categories. Do not introduce production-grade infrastructure, exhaustive documentation, or multi-agent workflows unless the project needs them.
 
 ## Validate this repository
 
@@ -57,7 +50,7 @@ node --test scripts/*.test.mjs
 node scripts/validate-template.mjs
 ```
 
-GitHub Actions also parses the repository and starter workflow YAML. The release workflow runs tests, template validation, YAML parsing, workflow security analysis, and tag/version/main-ancestry checks before publishing.
+GitHub Actions also parses repository and starter workflow YAML. The release workflow runs tests, validation, YAML parsing, workflow security analysis, and tag/version/main-ancestry checks before publishing.
 
 ## Non-goals
 
