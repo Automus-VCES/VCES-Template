@@ -1,9 +1,10 @@
-name: Workflow Security and Dependency Review
+name: Workflow Security and Security Automation Gate
 
 on:
   pull_request:
   push:
     branches: [main, "vces/**"]
+  workflow_dispatch:
 
 permissions: {}
 
@@ -24,9 +25,41 @@ jobs:
         with:
           advanced-security: false
           annotations: true
+          version: v1.31.1
+
+  security-gate:
+    name: Security Automation Gate
+    needs: workflow-security
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Fail if workflow security analysis did not pass
+        if: ${{ needs.workflow-security.result != 'success' }}
+        run: |
+          echo "Workflow security analysis did not succeed; blocking the security gate."
+          exit 1
+      - name: Checkout repository
+        if: ${{ needs.workflow-security.result == 'success' }}
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Scan source, dependencies, secrets, and infrastructure configuration
+        if: ${{ needs.workflow-security.result == 'success' }}
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          scanners: vuln,misconfig,secret
+          severity: CRITICAL,HIGH
+          ignore-unfixed: false
+          exit-code: "1"
+          format: table
+          version: v0.76.2
 
   dependency-review:
-    name: Dependency vulnerability review (requires GitHub Advanced Security)
+    name: Dependency vulnerability review (optional GitHub capability)
     if: ${{ vars.ENABLE_DEPENDENCY_REVIEW == 'true' }}
     runs-on: ubuntu-latest
     permissions:
