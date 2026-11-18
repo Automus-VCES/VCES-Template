@@ -1,31 +1,37 @@
 # VCES Adoption Guide
 
-Adopt VCES incrementally. Do not begin by rewriting a working project or forcing every repository into an identical architecture.
+Adopt VCES incrementally. Do not rewrite a working project or force every repository into an identical architecture, document set, or workflow.
 
 ## 1. Choose a level
 
-| Level | Suitable for | Minimum focus |
+| Level | Suitable for | Focus |
 |---|---|---|
-| Basic | Small, low-risk standalone apps | Setup docs, lint, tests, build, secrets/dependencies |
-| Standard | Actively maintained apps | Architecture, integration tests, security checks, CI, review, releases |
-| Production | Business-critical or externally exposed systems | Threat model, recovery, monitoring, deployment approvals, rollback, auditability |
+| Basic | Small, low-risk standalone apps | Correct functionality, simple verification, safe handling of secrets and data |
+| Standard | Actively maintained apps | Maintainable architecture, relevant tests, security, repeatable checks |
+| Production | Business-critical or externally exposed systems | Risk-specific threat analysis, recovery, monitoring, release controls, and operational readiness |
 
 Choose based on impact, exposure, data sensitivity, and operational dependency—not repository size.
 
 ## 2. Keep adoption lightweight
 
-Use only the controls that fit the app's actual impact, exposure, and data sensitivity. Basic projects do not need production infrastructure, formal threat models, exhaustive documentation, or multi-agent workflows by default. Use a skill only when its trigger applies. Do not copy every template automatically; keep only documents that the project will maintain and use. The five files under `skills/` provide the core engineering workflows. Domain-specific security guidance lives as flat `*-skill.md` files directly under `security/`; select only the relevant skills for the task. These are repository guidance files, not a claim of native compatibility with every agent's skill-discovery format.
+VCES Standard is the source of requirements. Instructions, skills, templates, checklists, status documents, health assessments, CI workflows, and scanners are aids to apply those requirements—not mandatory additions to every project.
+
+- Copy only templates that the project will use and maintain.
+- Remove or mark irrelevant sections in copied templates; do not fill every section just for completeness.
+- A small project may use its README and concise agent instructions instead of maintaining separate status, contribution, security, or architecture documents.
+- Use skills automatically when their triggers apply; do not read or invoke every skill on every task.
+- Add CI or security automation only when it creates useful, repeatable assurance. Do not require starter workflows by default.
+- The secure coding checklist is optional; use it when a focused checklist improves a security review.
 
 ## 3. New repository
 
-1. Record the canonical VCES URL and adopted version.
-2. Copy `templates/PROJECT-STANDARD.md`, `PROJECT-STATUS.md`, and `AGENTS.md` to the repository root.
-3. Copy and customize `CONTRIBUTING.md` and `SECURITY.md`.
-4. Copy `templates/SECURE-VIBE-CODING-CHECKLIST.md` into the project (for example as `SECURITY-CHECKLIST.md`) and use it for security-sensitive features and release reviews.
-5. Add architecture/development docs when relevant.
-6. Select and customize CI/security workflows for the actual stack.
-7. Define real commands, constraints, and approval boundaries.
-8. Run checks and record evidence in project status.
+1. Record the VCES version and selected level (in project docs if useful).
+2. Tailor a project standard only if project-specific stack, architecture, or constraints need to be recorded.
+3. Provide agent instructions with real project constraints, protected paths/data, approval boundaries, and verification commands.
+4. Add contribution and security-reporting documents if the project needs them (for example, collaboration or public vulnerability reporting).
+5. Add architecture docs or ADRs only for consequential decisions.
+6. Configure CI/security workflows only for checks the project can run and maintain.
+7. Verify the working implementation and record evidence where a durable status report is useful.
 
 ## 4. Existing repository
 
@@ -35,50 +41,48 @@ Inspect implementation, instructions, architecture, tests, workflows, security, 
 ### Prioritize gaps
 1. Active security exposure and data-integrity risks.
 2. Broken core functionality and release blockers.
-3. Missing essential tests and CI.
+3. Missing essential verification.
 4. Unsafe dependencies or unclear architecture.
-5. Recovery, monitoring, and deployment gaps.
+5. Recovery, monitoring, and deployment gaps when relevant.
 6. Documentation and developer experience.
 
-Give material gaps an owner and acceptance criteria. Do not treat every recommendation as an immediate requirement.
+Treat recommendations as findings to assess, not automatic work. Give material gaps an owner and acceptance criteria when tracking is needed.
 
 ### Adopt incrementally
-Introduce templates and automation in reviewable changes. Preserve existing behavior. Do not replace working CI or architecture merely to match an example.
+Introduce only necessary changes. Preserve existing behavior. Do not replace working CI, architecture, or conventions merely to match an example.
 
 ### Verify
-Run actual project checks and update `PROJECT-STATUS.md` with results, blockers, and residual risks.
+Run checks appropriate to the change and project risk. Record results, blockers, and residual risks in the project status document if one is maintained.
 
 ## 5. Document responsibilities
+
 - VCES: universal engineering requirements.
-- PROJECT-STANDARD: project stack, architecture, commands, and risk controls.
-- AGENTS: how agents apply both in this repository.
-- CONTRIBUTING: human contribution and review process.
-- PROJECT-STATUS: current verified state.
-- CI: automated repeatable enforcement.
+- PROJECT-STANDARD: project-specific stack, architecture, commands, and risk controls (optional; useful when this information is substantial).
+- AGENTS: how agents apply VCES and project constraints.
+- CONTRIBUTING / SECURITY: project collaboration and vulnerability reporting policies, when applicable.
+- PROJECT-STATUS: evidence-based state snapshot, only when a durable status report is useful.
+- CI: automated repeatable enforcement, where applicable.
 
-Avoid duplicating the full standard. Link to the canonical source and record its version.
+Avoid duplicating the full standard. Link to the canonical source and record its version when practical.
 
-## 6. Workflow template configuration
+## 6. Workflow examples
 
-The starter workflows are examples, not universal drop-ins. Before copying one, confirm its action versions, runner requirements, dependency installation, and required scripts match the target project. All action references in maintained examples are pinned to immutable commit SHAs; review Dependabot updates before adoption.
+Starter workflows are optional examples, not universal drop-ins. Before copying one, confirm action versions, runner requirements, dependency installation, and required scripts match the target project.
 
-- Node.js: `npm test` and `npm run build` are mandatory. Add those scripts to `package.json`; lint and typecheck steps use `--if-present` only because they are optional checks. Configure the `NODE_VERSION` repository variable when the default Node 22 does not match the project.
-- Python: adapt dependency installation to the project's lockfile and test extras. The example installs pytest and runs compileall plus pytest. Configure `PYTHON_VERSION` when needed.
-- Flutter: configure `FLUTTER_VERSION` to pin the SDK; otherwise the example uses the stable channel.
+- Node.js: the example expects `npm test` and `npm run build`; add or adapt scripts to match the actual project. Optional lint/typecheck steps are only run when configured.
+- Python: adapt dependency installation and test commands to the project's lockfile and environment.
+- Flutter: configure the SDK version and checks to match the project.
 
-The template repository CI parses all workflow YAML and example workflow YAML. Adopting repositories should add equivalent syntax and security checks for their own workflows.
+This template repository validates its own workflow YAML. Adopting repositories should add syntax/security checks only if appropriate.
 
 ## 7. Keep projects current
 
-Review VCES during planned maintenance and after material security, AI-agent, or delivery changes. Compare versions, assess changed requirements, update project controls, and record verification.
+Review VCES during planned maintenance and after material security, AI-agent, or delivery changes. Assess changed requirements and update project controls only where applicable.
 
-## 8. Acceptance checklist
-- [ ] Owner, adoption level, and VCES version recorded.
-- [ ] Project Standard customized with real stack and commands.
-- [ ] Agent instructions define constraints and approvals.
-- [ ] Status baseline contains evidence, not guesses.
-- [ ] Contribution and security policies are usable.
-- [ ] CI matches the actual toolchain.
-- [ ] Secret and dependency controls are enabled.
-- [ ] Backup/restore addressed where applicable.
-- [ ] Release gates and rollback expectations defined.
+## Optional adoption checklist
+
+- [ ] VCES version and level understood.
+- [ ] Agent instructions reflect real project constraints.
+- [ ] Relevant checks and security controls are verified.
+- [ ] Any adopted templates are customized and actively maintained.
+- [ ] Remaining risks or blockers are recorded when tracking is useful.
