@@ -4,7 +4,7 @@
 
 ## 1. Purpose and authority
 
-VCES defines minimum controls for planning, implementing, validating, securing, documenting, and releasing software. It is technology-agnostic. Each adopting repository MUST define its own stack, architecture, domain constraints, and operational requirements in PROJECT-STANDARD.md. Project requirements may add stricter controls; project conventions MUST NOT silently weaken VCES mandatory requirements.
+VCES defines minimum controls for planning, implementing, validating, securing, documenting, and releasing software. It is technology-agnostic. Each adopting repository MUST make applicable stack, architecture, domain constraints, and operational requirements discoverable. These MAY live in existing README/agent instructions/configuration or an optional PROJECT-STANDARD.md; a separate file is not mandatory. Project requirements may add stricter controls; project conventions MUST NOT silently weaken VCES mandatory requirements.
 
 Apply this precedence: applicable law and binding organizational policy; approved project-specific security and operational requirements; VCES mandatory requirements; project conventions. Higher-level requirements may impose stricter controls but do not authorize weakening VCES. A deviation from a VCES requirement is permitted only through an explicitly authorized, documented exception where the requirement itself allows an exception or the accountable VCES owner approves it. Record scope, rationale, approver, compensating controls, and review/expiry date.
 
@@ -37,6 +37,46 @@ VCES MUST be applied proportionately. Choose the simplest solution that satisfie
 - Reuse existing project capabilities before adding new dependencies or services. Prefer removing unnecessary complexity when doing so is safe.
 
 **Decision test:** Does this addition satisfy an actual requirement or reduce a real risk? If not, do not add it.
+
+## 3.2 User-first engineering
+
+The user should focus on the outcome they want; VCES and the coding agent handle engineering decisions. The agent MUST make routine technical choices using repository conventions and the simplest suitable approach; ask only questions that materially affect correctness, safety, scope, or irreversible decisions. Explain material risks and trade-offs in plain language. Avoid unnecessary plans, documents, checklists, and progress narration.
+
+## 3.3 Automatic request-intent workflow
+
+Classify natural-language requests automatically; users do not need special commands:
+- **Build/change:** understand outcome and acceptance criteria; inspect context; clarify only essentials; plan proportionately; implement; verify; review diff.
+- **Audit/review:** inspect implementation/configuration and report evidence-based findings; do not modify audited code unless remediation is requested.
+- **Fix/debug:** establish evidence, identify root cause, make a focused correction, add regression coverage, and verify.
+- **Explain/advise:** explain observed state, reason, impact, and recommendation without unrequested changes.
+
+## 3.4 Automatic skill selection
+
+Skills are optional focused references, not mandatory rituals. Read only relevant files. If the host does not auto-load Markdown skills, explicitly open the relevant repository file; never claim a skill was loaded unless read.
+
+| Skill file | Trigger |
+|---|---|
+| `skills/project-planning-skill.md` | New project, substantial feature, unclear scope, material risk |
+| `skills/architecture-review-skill.md` | Stack/data model, boundaries, major integration, structural decision |
+| `skills/secure-development-skill.md` | Baseline implementation; deepen for trust boundaries, auth, sensitive data, uploads, integrations, deployment |
+| `skills/testing-debugging-skill.md` | Defects, behavior changes, regression, verification |
+| `skills/code-review-skill.md` | Meaningful changes, security-sensitive work, pre-merge/release review |
+| `security/application-security-skill.md` | Input/output, injection, uploads, SSRF |
+| `security/authentication-security-skill.md` | Identity, sessions, passwords, MFA, recovery |
+| `security/api-security-skill.md` | API authorization, tokens, rate limits, webhooks |
+| `security/business-logic-security-skill.md` | Payments, pricing, workflows, entitlements |
+| `security/data-security-skill.md` | Sensitive data, database access, exports, retention, backups |
+| `security/infrastructure-security-skill.md` | Cloud, network, DNS, runtime, hosting, containers |
+| `security/supply-chain-security-skill.md` | Dependencies, package scripts, CI/CD, build provenance |
+| `security/ai-security-skill.md` | LLMs, agents, tools, RAG, prompt injection |
+| `security/security-testing-skill.md` | Security test design, scanning, verification |
+| `security/incident-response-skill.md` | Suspected compromise, containment, recovery |
+
+Load the smallest relevant set; do not load all skills by default. The canonical Standard takes precedence over skill guidance.
+
+## 3.5 Audit finding format
+
+Each audit finding MUST include **Severity** (Critical/High/Medium/Low/Informational), **Finding**, **Evidence** (file/line, configuration, test, or reproducible observation), **Impact**, **Recommended fix**, and **Confidence/status** (Confirmed/Suspected/Not verified). Order by severity and impact. State audit scope and checks not run; never present suspicion as confirmed fact.
 
 ## 4. Engineering lifecycle
 
