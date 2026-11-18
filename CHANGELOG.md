@@ -4,6 +4,11 @@ All notable changes are recorded here. VCES uses Semantic Versioning for normati
 
 ## [Unreleased]
 
+### Changed
+- Clarify that adoption templates, checklists, health assessments, and CI/security workflows are optional and project-tailored.
+- Add automatic core and domain skill-selection guidance for coding agents so users do not need to invoke skills manually.
+- Reduce adoption guidance to focus on the Standard and relevant project instructions, with supporting artifacts added only when useful.
+
 ### Added
 - Add a risk-based Secure Vibe Coding Checklist covering authorization, uploads, SSRF, secrets, infrastructure exposure, verification, and post-deployment checks.
 - Add explicit secure implementation and runtime controls to the canonical standard and project/agent templates.
