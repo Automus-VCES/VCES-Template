@@ -1,6 +1,6 @@
 # Secure Vibe Coding Checklist
 
-> Use this as a risk-based implementation and review aid. It complements VCES; it is not a security certification. Mark controls N/A only with a reason. Record evidence for applicable controls.
+> Optional, risk-based implementation and review aid. Use it when a focused checklist adds value for security-sensitive work. It complements VCES and is not a security certification. Mark controls N/A only with a reason and record evidence for applicable controls.
 
 ## 1. Before prompting or implementing
 - [ ] Identify the app's users, assets, sensitive data, trust boundaries, and externally reachable components.
