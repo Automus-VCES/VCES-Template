@@ -1,88 +1,70 @@
 # VCES Adoption Guide
 
-Adopt VCES incrementally. Do not rewrite a working project or force every repository into an identical architecture, document set, or workflow.
+Use VCES as the engineering standard for both building new applications and reviewing existing ones. Adopt the requirements that apply; do not turn the supporting materials into a mandatory project setup.
 
-## 1. Choose a level
+## 1. Start with the outcome
+
+You do not need to know VCES terminology, choose skills, or prepare a technical checklist. Tell the coding agent what you want:
+
+- **New project:** "Build this project according to VCES. Choose a suitable, maintainable approach and handle the engineering details."
+- **Existing project:** "Audit this project against VCES. Report evidence-based findings and prioritize the risks. Do not change files yet."
+- **Fixes after an audit:** "Address the agreed VCES findings, verify the changes, and report anything unresolved."
+
+The agent should infer Build, Audit, Fix, or Explain intent and follow the corresponding path in the Standard. It should ask only for decisions that materially affect correctness, scope, security, cost, or irreversible actions.
+
+## 2. Apply the right level of control
 
 | Level | Suitable for | Focus |
 |---|---|---|
-| Basic | Small, low-risk standalone apps | Correct functionality, simple verification, safe handling of secrets and data |
-| Standard | Actively maintained apps | Maintainable architecture, relevant tests, security, repeatable checks |
-| Production | Business-critical or externally exposed systems | Risk-specific threat analysis, recovery, monitoring, release controls, and operational readiness |
+| Basic | Small, low-risk standalone apps | Correct functionality, safe input/data handling, essential tests |
+| Standard | Actively maintained applications | Maintainable structure, relevant tests, security, repeatable checks |
+| Production | Business-critical or externally exposed systems | Risk-specific security, recovery, monitoring, release and operational readiness |
 
-Choose based on impact, exposure, data sensitivity, and operational dependency—not repository size.
+Choose based on impact, exposure, data sensitivity, and operational dependency—not repository size or developer experience. These levels guide the depth of assurance; they are not separate architectures or fixed checklists.
 
-## 2. Keep adoption lightweight
+## 3. New project — Build
 
-VCES Standard is the source of requirements. Instructions, skills, templates, checklists, status documents, health assessments, CI workflows, and scanners are aids to apply those requirements—not mandatory additions to every project.
+1. Understand the goal, users, important data, integrations, and deployment expectations.
+2. Choose the simplest suitable stack, architecture, and project structure.
+3. Add project-specific instructions only for real constraints, commands, protected data, and approval boundaries.
+4. Implement applicable security, error handling, data integrity, and reliability controls.
+5. Test important user journeys and failure/boundary cases; run relevant checks and a production build when applicable.
+6. Explain what was verified, what was not verified, and any remaining risks.
 
-- Copy only templates that the project will use and maintain.
-- Remove or mark irrelevant sections in copied templates; do not fill every section just for completeness.
-- A small project may use its README and concise agent instructions instead of maintaining separate status, contribution, security, or architecture documents.
-- Use skills automatically when their triggers apply; do not read or invoke every skill on every task.
-- Add CI or security automation only when it creates useful, repeatable assurance. Do not require starter workflows by default.
-- The secure coding checklist is optional; use it when a focused checklist improves a security review.
+Do not create every template, document, test category, CI workflow, or architecture diagram by default. Add them only when they improve the project.
 
-## 3. New repository
+## 4. Existing project — Audit
 
-1. Record the VCES version and selected level (in project docs if useful).
-2. Tailor a project standard only if project-specific stack, architecture, or constraints need to be recorded.
-3. Provide agent instructions with real project constraints, protected paths/data, approval boundaries, and verification commands.
-4. Add contribution and security-reporting documents if the project needs them (for example, collaboration or public vulnerability reporting).
-5. Add architecture docs or ADRs only for consequential decisions.
-6. Configure CI/security workflows only for checks the project can run and maintain.
-7. Verify the working implementation and record evidence where a durable status report is useful.
+1. Inspect repository instructions, code, dependencies, architecture, tests, workflows, data handling, deployment, and Git state as available.
+2. Assess applicable VCES requirements; distinguish satisfied controls, gaps, risks, unknowns, and checks not run.
+3. Report findings with severity, evidence, impact, recommended fix, and confidence.
+4. Prioritize active security exposure and data-integrity risks, then broken critical functionality and missing essential verification.
+5. Recommend proportionate remediation. Do not modify audited code unless remediation is requested.
 
-## 4. Existing repository
+An audit is not a certification. State scope and limitations clearly, especially when production configuration, runtime behavior, or cloud settings could not be inspected.
 
-### Baseline audit
-Inspect implementation, instructions, architecture, tests, workflows, security, data handling, releases, and Git state. Record controls already satisfied, gaps, stale/conflicting docs, critical risks, and unknowns.
+## 5. Keep adoption lightweight
 
-### Prioritize gaps
-1. Active security exposure and data-integrity risks.
-2. Broken core functionality and release blockers.
-3. Missing essential verification.
-4. Unsafe dependencies or unclear architecture.
-5. Recovery, monitoring, and deployment gaps when relevant.
-6. Documentation and developer experience.
+VCES Standard is the source of requirements. Instructions, skills, templates, checklists, health assessments, CI workflows, and scanners are supporting aids—not mandatory additions to every project.
 
-Treat recommendations as findings to assess, not automatic work. Give material gaps an owner and acceptance criteria when tracking is needed.
+- Use existing project documentation where it already records the needed information.
+- A small project may need only a README and concise agent instructions.
+- Create PROJECT-STANDARD, PROJECT-STATUS, ADRs, contribution/security documents, or architecture guides only when there is a real need.
+- Consult only skills relevant to the task; agents should select them automatically.
+- Add CI and security automation only when it provides useful repeatable assurance and can be maintained.
+- Use scanners appropriate to the application's stack and threat model; no particular scanner is universally required.
+- Treat checklists and health scores as aids, never as substitutes for engineering judgment or mandatory security controls.
 
-### Adopt incrementally
-Introduce only necessary changes. Preserve existing behavior. Do not replace working CI, architecture, or conventions merely to match an example.
+## 6. Templates and workflow examples
 
-### Verify
-Run checks appropriate to the change and project risk. Record results, blockers, and residual risks in the project status document if one is maintained.
+Templates and starter workflows are optional examples, not universal drop-ins. Copy only what the project will use and maintain. Customize commands, versions, permissions, and checks before use. Do not replace working architecture or CI merely to match an example.
 
-## 5. Document responsibilities
+This VCES repository validates its own required files, Markdown links, tests, and workflow YAML. That repository-maintenance automation is not a requirement imposed on every adopting project.
 
-- VCES: universal engineering requirements.
-- PROJECT-STANDARD: project-specific stack, architecture, commands, and risk controls (optional; useful when this information is substantial).
-- AGENTS: how agents apply VCES and project constraints.
-- CONTRIBUTING / SECURITY: project collaboration and vulnerability reporting policies, when applicable.
-- PROJECT-STATUS: evidence-based state snapshot, only when a durable status report is useful.
-- CI: automated repeatable enforcement, where applicable.
+## 7. Reassess when risk changes
 
-Avoid duplicating the full standard. Link to the canonical source and record its version when practical.
+Review relevant VCES controls after material changes to users, data, authentication, integrations, external exposure, deployment, or business impact—and after significant incidents. Update project controls only where the change makes them applicable.
 
-## 6. Workflow examples
+## Optional adoption notes
 
-Starter workflows are optional examples, not universal drop-ins. Before copying one, confirm action versions, runner requirements, dependency installation, and required scripts match the target project.
-
-- Node.js: the example expects `npm test` and `npm run build`; add or adapt scripts to match the actual project. Optional lint/typecheck steps are only run when configured.
-- Python: adapt dependency installation and test commands to the project's lockfile and environment.
-- Flutter: configure the SDK version and checks to match the project.
-
-This template repository validates its own workflow YAML. Adopting repositories should add syntax/security checks only if appropriate.
-
-## 7. Keep projects current
-
-Review VCES during planned maintenance and after material security, AI-agent, or delivery changes. Assess changed requirements and update project controls only where applicable.
-
-## Optional adoption checklist
-
-- [ ] VCES version and level understood.
-- [ ] Agent instructions reflect real project constraints.
-- [ ] Relevant checks and security controls are verified.
-- [ ] Any adopted templates are customized and actively maintained.
-- [ ] Remaining risks or blockers are recorded when tracking is useful.
+Record the VCES version, selected assurance level, accepted risks, and evidence in existing project documentation when useful. Do not create a separate tracking document solely to complete this guide.

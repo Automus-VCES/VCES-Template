@@ -1,47 +1,53 @@
 # Vibe Coding Engineering Standard (VCES)
 
-VCES is a technology-agnostic engineering standard and adoption toolkit for software built by people, AI coding agents, or both.
+VCES is a practical, technology-agnostic engineering standard for people building software with AI coding agents. It helps users who are not professional developers get more secure, stable, maintainable, and reliable applications without having to manage every engineering detail themselves.
 
-This repository is the **canonical source of truth** for universal engineering rules. Adopting repositories tailor project-specific requirements without silently weakening or contradicting the standard.
+Use VCES in two main ways:
+- **Build:** ask an AI coding agent to build a new project according to VCES.
+- **Audit:** ask it to inspect an existing project against VCES, report evidence-based gaps, and recommend prioritized fixes.
 
-VCES follows **Minimum Sufficient Engineering**: start with the simplest maintainable solution, apply controls proportionate to actual risk, and add complexity only when a real requirement or evidenced risk justifies it.
+VCES is the source of engineering requirements. The repository's instructions, skills, templates, checklists, and automation help apply the Standard; they are not all mandatory project components.
 
 ## Start here
 
-1. Read the [VCES standard](VIBE-CODING-STANDARD.md).
-2. Choose an adoption level and follow the [adoption guide](docs/ADOPTION-GUIDE.md).
-3. Add only the project instructions and templates that will actually be useful and maintained.
-4. Give coding agents the repository `AGENTS.md` instructions; let the agent select relevant skills automatically based on the task.
-5. Use the [core skills](skills/) and [focused security skills](security/) when their triggers apply; they are guidance, not a requirement to read every file for every task.
-6. Add CI, security scanning, and starter workflows only when they provide useful checks for that project.
+1. Read [the VCES Standard](VIBE-CODING-STANDARD.md).
+2. Use the [Adoption Guide](docs/ADOPTION-GUIDE.md) for the practical Build and Audit paths.
+3. Give the coding agent the project's goal. It should select relevant skills and engineering steps automatically.
+4. Add only project instructions, documents, templates, tests, and automation that solve a real need and can be maintained.
+
+## Core outcomes
+
+- **Security:** reduce avoidable vulnerabilities and protect users, data, and credentials.
+- **Stability and reliability:** validate important behavior, handle failures, and protect data integrity.
+- **Maintainability:** use understandable structure and avoid unnecessary complexity.
+- **Verification:** distinguish what was actually checked from assumptions, unknowns, and unrun checks.
 
 ## Repository contents
 
 | Path | Purpose |
 |---|---|
-| `VIBE-CODING-STANDARD.md` | Universal engineering requirements and release gates |
-| `AGENTS.md` | AI agent instructions for maintaining and applying VCES |
-| `skills/` | Five focused, flat Markdown skills for planning, architecture, baseline secure development, testing/debugging, and review |
-| `security/` | Flat, domain-specific security guidance; consult only the domains relevant to the work |
-| `templates/` | Optional, copy-ready project documents, checklist, ADR, and workflow examples |
-| `docs/ADOPTION-GUIDE.md` | Proportionate adoption for new and existing repositories |
-| `docs/ENGINEERING-HEALTH-CHECK.md` | Optional evidence-based assessment; not a required workflow |
-| `docs/RELEASE-PROCESS.md` | Versioning and release guidance |
-| `docs/GITHUB-SECURITY-CONFIGURATION.md` | GitHub security configuration guidance |
+| `VIBE-CODING-STANDARD.md` | Canonical engineering requirements |
+| `AGENTS.md` | Instructions for AI agents maintaining and applying VCES |
+| `skills/` | Focused guidance for planning, architecture, secure development, testing, and review |
+| `security/` | Domain-specific security guidance; consult only when relevant |
+| `templates/` | Optional project documents, checklists, ADRs, and workflow examples |
+| `docs/ADOPTION-GUIDE.md` | Practical guidance for new and existing projects |
+| `docs/ENGINEERING-HEALTH-CHECK.md` | Optional evidence-based assessment |
+| `docs/RELEASE-PROCESS.md` | VCES Standard versioning and release guidance |
+| `docs/GITHUB-SECURITY-CONFIGURATION.md` | Optional GitHub security configuration guidance |
 
-## Skill selection
+## How VCES keeps work proportionate
 
-The baseline standard and project instructions are always applicable. Agents should automatically choose only the relevant skills from task triggers; users should not need to know or manually invoke a skill. The core secure-development skill is the baseline; specialized security skills add focused guidance when their domain is touched.
-
-## Adoption levels
-
-- **Basic:** small, low-risk standalone projects.
-- **Standard:** actively maintained applications.
-- **Production:** business-critical or externally exposed systems.
-
-Choose controls proportionate to impact, exposure, data sensitivity, and operational dependency—not repository size. These levels are guidance, not rigid categories. Do not introduce production-grade infrastructure, exhaustive documentation, or multi-agent workflows unless the project needs them.
+- The user describes the outcome; the agent handles routine engineering decisions.
+- Build, Audit, Fix, and Explain intent is inferred from natural language.
+- Skills are selected automatically and only when relevant.
+- Security controls are mandatory where applicable; scanners and products are chosen based on project risk and technology.
+- Templates, separate documents, CI, and other automation are optional unless a real project requirement makes them necessary.
+- A passing scan, build, checklist, or health score is not proof that an application is secure or production-ready.
 
 ## Validate this repository
+
+The following checks maintain this VCES template repository; they are not required setup for every project.
 
 Requires Node.js 22 or later:
 
@@ -50,11 +56,11 @@ node --test scripts/*.test.mjs
 node scripts/validate-template.mjs
 ```
 
-GitHub Actions also parses repository and starter workflow YAML. The Security Automation Gate scans for HIGH/CRITICAL dependency, secret, and infrastructure misconfiguration findings; release publication requires this gate to pass. Repository owners must require **Security Automation Gate** in default-branch protection; see [GitHub security configuration](docs/GITHUB-SECURITY-CONFIGURATION.md).
+CI also parses workflow YAML and analyzes GitHub Actions workflows with zizmor. Release publication validates the Standard version, templates, tests, workflow syntax/security, and tag ancestry. No Trivy filesystem gate or mandatory branch-protection rule is required for this knowledge-and-standard repository.
 
 ## Non-goals
 
-VCES does not prescribe a programming language, framework, architecture, hosting provider, branching model, or AI vendor. It does not treat a passing build as proof of correctness or authorize agents to make consequential production changes.
+VCES does not prescribe a programming language, framework, hosting provider, architecture, scanner, branching model, or AI vendor. It does not require enterprise-grade processes for small projects or authorize agents to make consequential production changes without approval.
 
 ## Version and release status
 

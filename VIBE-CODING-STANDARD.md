@@ -44,11 +44,20 @@ The user should focus on the outcome they want; VCES and the coding agent handle
 
 ## 3.3 Automatic request-intent workflow
 
-Classify natural-language requests automatically; users do not need special commands:
-- **Build/change:** understand outcome and acceptance criteria; inspect context; clarify only essentials; plan proportionately; implement; verify; review diff.
-- **Audit/review:** inspect implementation/configuration and report evidence-based findings; do not modify audited code unless remediation is requested.
-- **Fix/debug:** establish evidence, identify root cause, make a focused correction, add regression coverage, and verify.
+Classify natural-language requests automatically; users do not need special commands or to manage engineering steps:
+- **Build/change:** understand the desired outcome; inspect context; clarify only essentials; choose a proportionate design; implement; verify; review the diff.
+- **Audit/review:** inspect the existing implementation and configuration against applicable VCES requirements; report evidence-based findings and gaps; do not modify audited code unless remediation is requested.
+- **Fix/debug:** establish evidence, identify root cause, make a focused correction, add regression coverage where useful, and verify.
 - **Explain/advise:** explain observed state, reason, impact, and recommendation without unrequested changes.
+
+#### Practical use: Build or Audit
+
+Users can simply state the outcome. The agent MUST select the applicable path:
+
+- **Build a new project:** understand the goal and essential constraints; select a suitable stack and simple architecture; establish project instructions and structure only as needed; implement security and reliability controls applicable to the project; test important behavior; verify the build and report remaining risks.
+- **Audit an existing project:** inspect the repository and running/deployment context available; assess applicable VCES requirements; identify what is satisfied, missing, unsafe, or unverified; prioritize findings by severity and impact; report evidence and recommended fixes. Do not rewrite or remediate the project unless asked.
+
+The agent MUST NOT require users to provide a technical checklist, choose skills, create every template, or run every possible tool. Ask only for information that materially changes the solution or risk.
 
 ## 3.4 Automatic skill selection
 
@@ -156,7 +165,7 @@ Measure or establish a credible baseline where feasible. Review CPU, memory, res
 
 ## 9. Testing and release gates
 
-Tests MUST be repeatable and relevant to risk. Include unit, integration, regression, acceptance, security, and performance tests as appropriate. Coverage percentages are indicators, not proof. Before release, acceptance criteria, mandatory tests/build, critical defect/security gates, migration/recovery checks, configuration, documentation, version/changelog, final diff, artifact, deployment, and rollback readiness MUST be verified.
+Tests MUST be repeatable and relevant to risk. Include unit, integration, regression, acceptance, security, and performance tests as appropriate. Coverage percentages are indicators, not proof. Before release, verify applicable acceptance criteria, required tests/build, critical defect and security disposition, migration/recovery checks, configuration, documentation, version/changelog, final diff, artifact, deployment, and rollback readiness. Controls that do not apply to the project MUST be recorded as not applicable only when there is a clear reason; do not create work for hypothetical components.
 
 A high health score never overrides a failed mandatory gate. Exceptions require an authorized decision, rationale, compensating controls, owner, and review/expiry. The critical-vulnerability exception process in Section 6 does not authorize release during active compromise.
 
@@ -164,7 +173,7 @@ A high health score never overrides a failed mandatory gate. Exceptions require 
 
 Keep changes scoped, reviewable, and attributable. Protect stable branches with appropriate checks and review. Do not rewrite shared history, force-push, or delete branches/tags without authorization. Review the complete diff.
 
-CI MUST validate proposed changes and stable branches. Workflows SHOULD use least-privilege permissions, reviewed immutable action SHAs for production-grade use, reproducible dependency installation, and safe handling of untrusted pull requests. Separate validation, release, and deployment permissions. Identify and retain release artifacts; use provenance/checksums where appropriate. Production deployments and irreversible migrations require explicit authorization unless an approved automation policy says otherwise.
+CI and automated workflows are OPTIONAL for projects where their setup and maintenance provide meaningful repeatable assurance. When CI is used, it MUST run the checks the project relies on and report failures accurately. Workflows SHOULD use least-privilege permissions, reviewed immutable action SHAs for production-grade use, reproducible dependency installation, and safe handling of untrusted pull requests. Separate validation, release, and deployment permissions. Identify and retain release artifacts; use provenance/checksums where appropriate when risk warrants them. Production deployments and irreversible migrations require explicit authorization unless an approved automation policy says otherwise.
 
 ## 11. AI coding agent requirements
 
@@ -174,7 +183,7 @@ Obtain approval before destructive data operations, production deployment, conse
 
 ## 12. Documentation baseline
 
-Maintain applicable documents: README, PROJECT-STANDARD, PROJECT-STATUS, AGENTS, CONTRIBUTING, SECURITY, CHANGELOG, architecture and development guides. Do not create empty documents just to satisfy a checklist. Keep documentation accurate and relevant.
+Maintain documentation that the project actually needs. A concise README and useful agent instructions may be sufficient for a small project. Add PROJECT-STANDARD, PROJECT-STATUS, CONTRIBUTING, SECURITY, CHANGELOG, architecture, or development documents only when they solve a real coordination, security, operational, or maintenance need. Do not create empty documents or duplicate the standard just to satisfy a checklist. Keep maintained documentation accurate and relevant.
 
 ## 13. Engineering health and exceptions
 
