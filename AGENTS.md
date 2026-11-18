@@ -22,8 +22,18 @@ Maintain this repository as the canonical, technology-agnostic Vibe Coding Engin
 ## Engineering approach
 - Apply Minimum Sufficient Engineering: choose the simplest maintainable solution that meets the actual requirement.
 - Do not add layers, abstractions, dependencies, services, tests, documents, or process steps without a concrete requirement or risk.
-- Use the five flat skills in `skills/` only when their stated trigger applies; do not run every skill for every task.
+- Skills are supporting guidance, not mandatory rituals. Automatically select and read only relevant skills; do not ask users to choose them.
 - Keep planning and verification proportionate to change impact. Never skip relevant security, data-integrity, or regression checks merely to stay lightweight.
+
+### Core skill triggers
+- Planning: new project, material feature, unclear requirements, or meaningful risk/scope.
+- Architecture: stack/data-model choice, major integration, boundary changes, structural complexity.
+- Secure development: baseline for implementation; deepen for trust boundaries, sensitive data, auth, uploads, integrations, or deployment.
+- Testing/debugging: behavior changes, defects, regression, data handling, release verification.
+- Code review: meaningful implementation, merge/release; use a brief self-review for tiny changes.
+
+### Specialized security skill triggers
+Use only the domain skill(s) that match the change: application/input/file/URL handling; authentication/session/account recovery; APIs/webhooks; business workflows/payments/entitlements; sensitive data/exports/retention/backups; infrastructure/network/cloud/runtime; dependencies/CI/release supply chain; AI/RAG/tools/agents; security testing; or incident response.
 
 ## Change workflow
 Inspect branch and working tree; identify affected standard, templates, docs, and workflows; make a focused change; validate required files and links with `node scripts/validate-template.mjs`; review workflow permissions; inspect the complete diff; update version/changelog where needed; report completed, verified, pending, and blocked items separately.
