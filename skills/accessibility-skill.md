@@ -7,7 +7,8 @@ Make applicable user interfaces perceivable, operable, understandable, and robus
 Use for user-facing UI changes, interactive components, forms, navigation, media, visual styling, and accessibility audits. Apply relevant checks whenever frontend behavior is changed.
 
 ## Instructions
-1. Use WCAG 2.2 Level AA as the default target unless law, contract, or project policy requires a different or stricter target. Do not claim conformance from an automated scan alone.
+1. **Before implementation:** identify applicable accessibility needs and WCAG 2.2 AA considerations for the changed journeys, controls, content, and responsive behavior; include them in acceptance criteria.
+2. Use WCAG 2.2 Level AA as the default target unless law, contract, or project policy requires a different or stricter target. Do not claim conformance from an automated scan alone.
 2. Prefer semantic HTML and native controls. Add ARIA only when native semantics are insufficient; do not override correct native behavior.
 3. Ensure all functionality is keyboard operable, focus order is logical, focus is visible, and focus is managed appropriately for dialogs, menus, route changes, and dynamic updates.
 4. Provide programmatic names, roles, values, labels, instructions, and error associations for controls. Ensure accessible names describe purpose.
@@ -19,6 +20,7 @@ Use for user-facing UI changes, interactive components, forms, navigation, media
 10. Test with keyboard navigation and appropriate assistive-technology checks for the affected interaction. Use automated tools as a supplement, not a substitute.
 
 ## Verification
+- Accessibility considerations were included in the acceptance criteria before implementation and checked against the rendered/working UI afterward.
 - Applicable WCAG 2.2 AA criteria have been considered for changed UI.
 - Keyboard-only users can reach, operate, and exit interactive controls.
 - Focus is visible and managed correctly.
