@@ -6,7 +6,7 @@ Make applicable user interfaces perceivable, operable, understandable, and robus
 ## When to use
 Use for user-facing UI changes, interactive components, forms, navigation, media, visual styling, and accessibility audits. Apply relevant checks whenever frontend behavior is changed.
 
-## Instructions
+## Workflow
 1. **Before implementation:** identify applicable accessibility needs and WCAG 2.2 AA considerations for the changed journeys, controls, content, and responsive behavior; include them in acceptance criteria.
 2. Use WCAG 2.2 Level AA as the default target unless law, contract, or project policy requires a different or stricter target. Do not claim conformance from an automated scan alone.
 3. Prefer semantic HTML and native controls. Add ARIA only when native semantics are insufficient; do not override correct native behavior.
