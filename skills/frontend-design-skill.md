@@ -6,7 +6,7 @@ Guide AI agents to produce coherent, purposeful, responsive frontend interfaces 
 ## When to use
 Use when creating or materially changing user-facing pages, components, layouts, visual styling, or interaction states. For backend-only changes, do not load this skill.
 
-## Instructions
+## Workflow
 1. **Pre-implementation gate:** inspect the existing product and UI system; identify the target task, content hierarchy, visual direction, responsive behavior, and acceptance criteria before coding. Resolve material design ambiguity early; record decisions briefly in the task rather than creating process documents.
 2. Inspect the existing application, design system, components, assets, typography, and conventions before designing. Reuse established patterns unless there is a clear reason to change them.
 3. Understand the product purpose, target users, content, and primary tasks before choosing a visual direction.
