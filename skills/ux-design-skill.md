@@ -7,7 +7,8 @@ Translate a product goal into clear, usable, and testable user experiences. This
 Use when creating or materially changing user-facing journeys, navigation, information architecture, forms, onboarding, or task flows. Skip for changes with no meaningful user-experience impact.
 
 ## Instructions
-1. Identify the intended users, their primary goals, context of use, and the problem the change solves. Use supplied evidence; label assumptions rather than inventing research.
+1. Before implementation, establish a lightweight UX brief: target user/task, primary journey, key content, important states, and observable acceptance criteria. Keep it in the task or existing project notes; do not create a separate document unless useful.
+2. Identify the intended users, their primary goals, context of use, and the problem the change solves. Use supplied evidence; label assumptions rather than inventing research.
 2. Map the smallest set of critical user journeys and their entry, decision, success, cancellation, and recovery paths.
 3. Organize information around user tasks. Use clear labels, predictable navigation, and meaningful hierarchy.
 4. Minimize unnecessary steps, cognitive load, repeated input, and surprise. Preserve user context when errors or interruptions occur.
@@ -15,6 +16,7 @@ Use when creating or materially changing user-facing journeys, navigation, infor
 6. Coordinate with frontend-design and accessibility guidance where visual or inclusive interaction decisions are involved.
 
 ## Verification
+- A proportionate pre-implementation UX brief exists for material user-facing changes, with assumptions distinguished from evidence.
 - Primary user goals and critical journeys are explicit.
 - Navigation, labels, and content hierarchy make key actions discoverable.
 - Important flows cover success, validation failure, cancellation, and recovery where applicable.
