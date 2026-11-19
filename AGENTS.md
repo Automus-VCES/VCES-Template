@@ -52,10 +52,13 @@ Use only matching domain files; combine only when a task crosses domains:
 - `security/infrastructure-security-skill.md`: cloud, network, DNS, runtime, hosting, containers.
 - `security/supply-chain-security-skill.md`: dependencies, package scripts, CI/CD, build provenance.
 - `security/ai-security-skill.md`: LLMs, agents, tools, RAG, prompt injection.
-- `security/threat-modeling-security-skill.md`: new systems/features, trust boundaries, sensitive data flows, privileged operations, external integrations, material architecture changes.\n- `security/security-testing-skill.md`: security test design, vulnerability lifecycle, scanning, remediation verification.
+- `security/threat-modeling-security-skill.md`: new systems/features, trust boundaries, sensitive data flows, privileged operations, external integrations, material architecture changes.
+- `security/security-testing-skill.md`: security test design, vulnerability lifecycle, scanning, remediation verification.
 - `security/incident-response-skill.md`: suspected compromise, containment, recovery.
 
-Security release severity and exception decisions MUST follow `VIBE-CODING-STANDARD.md` Section 6.6; skill files are supporting guidance and MUST NOT weaken the canonical policy. Use `docs/SECURITY-STANDARDS-MAPPING.md` as an informative reference crosswalk, not as a blanket requirement to implement every external control.\n\n### Audit output
+Security release severity and exception decisions MUST follow `VIBE-CODING-STANDARD.md` Section 6.6; skill files are supporting guidance and MUST NOT weaken the canonical policy. Use `docs/SECURITY-STANDARDS-MAPPING.md` as an informative reference crosswalk, not as a blanket requirement to implement every external control.
+
+### Audit output
 Each finding includes severity (Critical/High/Medium/Low/Informational), finding, evidence, impact, recommended fix, and confidence/status (Confirmed/Suspected/Not verified). Order by severity and impact; disclose audit scope and checks not run.
 
 ## Change workflow
