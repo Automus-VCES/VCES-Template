@@ -4,6 +4,16 @@ All notable changes are recorded here. VCES uses Semantic Versioning for normati
 
 ## [Unreleased]
 
+### Added
+- Add a lightweight threat-modeling security skill for material trust-boundary, data-flow, privilege, and integration changes.
+- Add an informative crosswalk from VCES security requirements to OWASP, NIST SSDF, Microsoft SDL, and OpenSSF/SLSA references.
+
+### Changed
+- Align security-testing release disposition with the canonical Critical/High severity policy and clarify vulnerability ownership, remediation, retesting, and closure.
+- Strengthen application security guidance for browser security headers, CSP, CORS, clickjacking protection, and credential storage.
+- Add threat-modeling skill routing and clarify that external standards mapping is informative rather than a blanket adoption mandate.
+
+
 ### Changed
 - Clarify the practical Build and Audit paths so users can state an outcome while agents select proportionate engineering steps automatically.
 - Make templates, separate project documents, scanners, CI, and branch-protection policies explicitly optional unless a project-specific need justifies them.
