@@ -29,7 +29,8 @@ VCES is the source of engineering requirements. The repository's instructions, s
 | `VIBE-CODING-STANDARD.md` | Canonical engineering requirements |
 | `AGENTS.md` | Instructions for AI agents maintaining and applying VCES |
 | `skills/` | Focused guidance for planning, architecture, secure development, testing, and review |
-| `security/` | Domain-specific security guidance; consult only when relevant |\n| `docs/SECURITY-STANDARDS-MAPPING.md` | Informative crosswalk to established external security standards |
+| `security/` | Domain-specific security guidance; consult only when relevant |
+| `docs/SECURITY-STANDARDS-MAPPING.md` | Informative crosswalk to established external security standards |
 | `templates/` | Optional project documents, checklists, ADRs, and workflow examples |
 | `docs/ADOPTION-GUIDE.md` | Practical guidance for new and existing projects |
 | `docs/ENGINEERING-HEALTH-CHECK.md` | Optional evidence-based assessment |
