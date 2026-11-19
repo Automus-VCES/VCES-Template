@@ -6,7 +6,7 @@ Identify realistic security threats early and select proportionate mitigations b
 ## When to use
 Use for new systems or material features involving new trust boundaries, sensitive data flows, privileged operations, external integrations, public exposure, or significant architecture changes. For low-risk changes, use a brief threat review rather than a formal workshop.
 
-## Lightweight workflow
+## Workflow
 1. Define the system or change, intended users, deployment context, and scope. Record assumptions and exclusions.
 2. Identify valuable assets and security objectives: confidentiality, integrity, availability, privacy, and account or tenant isolation as applicable.
 3. Map entry points, data flows, trust boundaries, identities, privileged operations, storage, external services, and administrative paths. A simple diagram or concise list is sufficient.
