@@ -23,7 +23,7 @@ Use during security-sensitive implementation, pre-release review, vulnerability 
 - Negative tests demonstrate denied access and rejected abuse cases.
 - Confirmed findings have regression coverage or documented reason why not.
 - Reports distinguish confirmed vulnerabilities from hypotheses and scanner-only alerts.
-- Release disposition and residual risk are recorded with evidence.
+- Every confirmed finding has an owner, severity, remediation status, retest result, and closure or accepted-risk record.\n- Release disposition and residual risk follow the canonical Standard and are recorded with evidence.\n- A vulnerability is not closed solely because a scanner no longer reports it; verify the affected behavior/control directly where feasible.
 
 ## Avoid
 Do not claim a system is secure because tests pass or scanners report no findings. Do not perform exploitation, persistence, data extraction, or disruptive testing without explicit authorization and an approved scope.
