@@ -5,6 +5,7 @@ All notable changes are recorded here. VCES uses Semantic Versioning for normati
 ## [Unreleased]
 
 ### Added
+- Add five focused UI/UX skills for UX design, frontend design, design systems, accessibility, and UI quality review, with source references and verification criteria rather than duplicated external documentation.
 - Add a lightweight threat-modeling security skill for material trust-boundary, data-flow, privilege, and integration changes.
 - Add an informative crosswalk from VCES security requirements to OWASP, NIST SSDF, Microsoft SDL, and OpenSSF/SLSA references.
 
