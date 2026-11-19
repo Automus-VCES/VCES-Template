@@ -27,7 +27,7 @@ test("accepts a complete template with valid skills and internal links", async (
 
   assert.deepEqual(result.errors, []);
   assert.equal(result.requiredCount, REQUIRED_FILES.length);
-  assert.equal(result.skillCount, 15);
+  assert.equal(result.skillCount, 16);
 });
 
 test("requires the secure vibe coding checklist", async (t) => {
@@ -75,7 +75,7 @@ test("rejects malformed percent-encoding in local links", async (t) => {
   assert.ok(result.errors.some((error) => error.includes("Invalid URL encoding")));
 });
 
-test("requires the five core and ten domain-specific flat skill files", async (t) => {
+test("requires all core and domain-specific flat skill files", async (t) => {
   const root = await createFixture(t);
   await rm(path.join(root, REQUIRED_SKILLS[5]));
 
