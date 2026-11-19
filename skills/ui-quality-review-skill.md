@@ -6,7 +6,7 @@ Verify that implemented interfaces satisfy user-facing requirements, design cons
 ## When to use
 Use after meaningful UI changes, during frontend audits, and before a user-facing release. For tiny cosmetic changes, perform a proportionate self-review.
 
-## Instructions
+## Workflow
 1. **Post-implementation gate:** do not approve from source inspection or compilation alone. Inspect the rendered UI and exercise the critical user journeys at representative viewport sizes when the environment permits.
 2. Review the request, acceptance criteria, critical user journeys, and relevant UX/frontend/design-system/accessibility guidance.
 3. Inspect the complete diff and identify affected pages, components, states, routes, and responsive breakpoints.
