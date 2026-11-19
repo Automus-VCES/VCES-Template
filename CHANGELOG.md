@@ -4,6 +4,9 @@ All notable changes are recorded here. VCES uses Semantic Versioning for normati
 
 ## [Unreleased]
 
+### Changed
+- Add proportionate pre-implementation design and post-implementation UI/UX verification gates to reduce avoidable rework; clarify that unavailable visual/accessibility checks must be reported as not run or blocked.
+
 ### Added
 - Add five focused UI/UX skills for UX design, frontend design, design systems, accessibility, and UI quality review, with source references and verification criteria rather than duplicated external documentation.
 - Add a lightweight threat-modeling security skill for material trust-boundary, data-flow, privilege, and integration changes.
