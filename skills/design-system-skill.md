@@ -6,7 +6,7 @@ Maintain visual and interaction consistency through reusable tokens, components,
 ## When to use
 Use when establishing or materially changing shared UI foundations, reusable components, themes, tokens, or cross-page consistency. For a one-off page that follows an established system, simply reuse the system.
 
-## Instructions
+## Workflow
 1. **Before implementation:** identify the existing source of truth for tokens, components, themes, and patterns; decide whether the change can reuse it. Define only the minimum tokens/components needed for a coherent result.
 2. Inspect existing tokens, component libraries, styles, and usage patterns before adding or changing foundations.
 3. Reuse the current system where practical. Do not introduce a second design system for the same product without a justified migration or boundary.
