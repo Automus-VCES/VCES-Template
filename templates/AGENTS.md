@@ -22,6 +22,11 @@ Automatically select and consult relevant VCES skills based on task triggers. Us
 - Secure development: baseline for implementation; deepen when security-sensitive boundaries or data are touched.
 - Testing/debugging: behavior changes, defects, regressions, data handling, and release checks.
 - Code review: meaningful implementation or release; brief self-review for small changes.
+- UX design: user journeys, navigation, forms, onboarding, or information architecture changes.
+- Frontend design: user-facing pages, responsive layouts, visual styling, or interaction changes.
+- Design system: shared tokens, reusable components, themes, or cross-page consistency changes.
+- Accessibility: user-facing UI and interactive components; use WCAG 2.2 AA as the default target.
+- UI quality review: meaningful UI changes, frontend audits, and pre-release verification.
 
 Consult domain-specific security guidance only when relevant: application/input/files/URL handling; authentication/sessions; APIs/webhooks; business logic/payments/entitlements; sensitive data/exports/retention; infrastructure/network/cloud; dependencies/CI/release; AI/RAG/tools; security testing; or incident response.
 
