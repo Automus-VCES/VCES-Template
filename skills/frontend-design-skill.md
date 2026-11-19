@@ -9,15 +9,15 @@ Use when creating or materially changing user-facing pages, components, layouts,
 ## Instructions
 1. **Pre-implementation gate:** inspect the existing product and UI system; identify the target task, content hierarchy, visual direction, responsive behavior, and acceptance criteria before coding. Resolve material design ambiguity early; record decisions briefly in the task rather than creating process documents.
 2. Inspect the existing application, design system, components, assets, typography, and conventions before designing. Reuse established patterns unless there is a clear reason to change them.
-2. Understand the product purpose, target users, content, and primary tasks before choosing a visual direction.
-3. Define a coherent visual direction appropriate to the product. Specify hierarchy, layout, typography, color roles, spacing, density, and imagery intentionally.
-4. Prefer semantic, reusable components and existing design tokens. Avoid arbitrary one-off values and duplicated component styles.
-5. Implement responsive behavior for the actual content and interaction model; do not merely shrink a desktop layout.
-6. Implement complete states for interactive elements: default, hover, focus, active, disabled, loading, empty, error, and success as applicable.
-7. Use meaningful content and realistic data shapes. Avoid placeholder copy, decorative controls that do nothing, and unsupported feature assumptions.
-8. Keep motion purposeful, brief, and non-essential to understanding or completing a task. Respect reduced-motion preferences.
-9. Verify the rendered result at representative viewport sizes. Compare against supplied references when available; fix visible layout, typography, spacing, overflow, and interaction defects.
-10. Follow the project framework and architecture. Do not introduce a new UI framework or dependency without a concrete need.
+3. Understand the product purpose, target users, content, and primary tasks before choosing a visual direction.
+4. Define a coherent visual direction appropriate to the product. Specify hierarchy, layout, typography, color roles, spacing, density, and imagery intentionally.
+5. Prefer semantic, reusable components and existing design tokens. Avoid arbitrary one-off values and duplicated component styles.
+6. Implement responsive behavior for the actual content and interaction model; do not merely shrink a desktop layout.
+7. Implement complete states for interactive elements: default, hover, focus, active, disabled, loading, empty, error, and success as applicable.
+8. Use meaningful content and realistic data shapes. Avoid placeholder copy, decorative controls that do nothing, and unsupported feature assumptions.
+9. Keep motion purposeful, brief, and non-essential to understanding or completing a task. Respect reduced-motion preferences.
+10. Verify the rendered result at representative viewport sizes. Compare against supplied references when available; fix visible layout, typography, spacing, overflow, and interaction defects.
+11. Follow the project framework and architecture. Do not introduce a new UI framework or dependency without a concrete need.
 
 ## Verification
 - The pre-implementation gate was completed before substantial UI implementation; important assumptions and design decisions are recorded.
