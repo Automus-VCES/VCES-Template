@@ -15,8 +15,9 @@ Use during security-sensitive implementation, pre-release review, vulnerability 
 6. Add regression tests for confirmed vulnerabilities and verify the fix fails before and passes after remediation.
 7. Record tool/version, scope, test case, expected/actual result, evidence, limitations, and timestamp.
 8. Triage findings by exploitability, impact, exposure, and compensating controls; define owner and due date.
-9. Block release for unresolved critical/high findings unless an authorized, documented exception process explicitly permits it.
-10. Re-test after relevant code, dependency, configuration, or infrastructure changes.
+9. Track each confirmed vulnerability from triage through owner assignment, remediation, retest, and documented closure; prioritize using exploitability, impact, exposure, and available mitigations.
+10. Apply the canonical release disposition in `VIBE-CODING-STANDARD.md` Section 6.6: unresolved Critical findings block routine release and require the formal approved risk/incident process for any permitted exception; active compromise is not eligible for an ordinary release exception. High findings require documented assessment and authorized disposition. Do not create a weaker skill-level exception.
+11. Re-test after relevant code, dependency, configuration, or infrastructure changes and after remediation; verify the regression test fails before the fix and passes after it.
 
 ## Verification
 - Tests are authorized, scoped, repeatable, and non-destructive by default.
