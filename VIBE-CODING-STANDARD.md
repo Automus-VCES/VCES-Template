@@ -70,6 +70,11 @@ Skills are optional focused references, not mandatory rituals. Read only relevan
 | `skills/secure-development-skill.md` | Baseline implementation; deepen for trust boundaries, auth, sensitive data, uploads, integrations, deployment |
 | `skills/testing-debugging-skill.md` | Defects, behavior changes, regression, verification |
 | `skills/code-review-skill.md` | Meaningful changes, security-sensitive work, pre-merge/release review |
+| `skills/ux-design-skill.md` | User journeys, navigation, information architecture, forms, onboarding |
+| `skills/frontend-design-skill.md` | User-facing pages, visual direction, responsive layouts, UI interactions |
+| `skills/design-system-skill.md` | Shared tokens, reusable components, themes, cross-page consistency |
+| `skills/accessibility-skill.md` | User-facing UI, interactive components, accessibility audits |
+| `skills/ui-quality-review-skill.md` | UI audits, meaningful frontend changes, pre-release UI verification |
 | `security/application-security-skill.md` | Input/output, injection, uploads, SSRF |
 | `security/authentication-security-skill.md` | Identity, sessions, passwords, MFA, recovery |
 | `security/api-security-skill.md` | API authorization, tokens, rate limits, webhooks |
