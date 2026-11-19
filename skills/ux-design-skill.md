@@ -9,11 +9,11 @@ Use when creating or materially changing user-facing journeys, navigation, infor
 ## Instructions
 1. Before implementation, establish a lightweight UX brief: target user/task, primary journey, key content, important states, and observable acceptance criteria. Keep it in the task or existing project notes; do not create a separate document unless useful.
 2. Identify the intended users, their primary goals, context of use, and the problem the change solves. Use supplied evidence; label assumptions rather than inventing research.
-2. Map the smallest set of critical user journeys and their entry, decision, success, cancellation, and recovery paths.
-3. Organize information around user tasks. Use clear labels, predictable navigation, and meaningful hierarchy.
-4. Minimize unnecessary steps, cognitive load, repeated input, and surprise. Preserve user context when errors or interruptions occur.
-5. Define observable acceptance criteria for important user tasks. Use lightweight prototypes or user feedback when uncertainty or impact justifies them.
-6. Coordinate with frontend-design and accessibility guidance where visual or inclusive interaction decisions are involved.
+3. Map the smallest set of critical user journeys and their entry, decision, success, cancellation, and recovery paths.
+4. Organize information around user tasks. Use clear labels, predictable navigation, and meaningful hierarchy.
+5. Minimize unnecessary steps, cognitive load, repeated input, and surprise. Preserve user context when errors or interruptions occur.
+6. Define observable acceptance criteria for important user tasks. Use lightweight prototypes or user feedback when uncertainty or impact justifies them.
+7. Coordinate with frontend-design and accessibility guidance where visual or inclusive interaction decisions are involved.
 
 ## Verification
 - A proportionate pre-implementation UX brief exists for material user-facing changes, with assumptions distinguished from evidence.
