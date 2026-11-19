@@ -9,12 +9,12 @@ Use when establishing or materially changing shared UI foundations, reusable com
 ## Instructions
 1. **Before implementation:** identify the existing source of truth for tokens, components, themes, and patterns; decide whether the change can reuse it. Define only the minimum tokens/components needed for a coherent result.
 2. Inspect existing tokens, component libraries, styles, and usage patterns before adding or changing foundations.
-2. Reuse the current system where practical. Do not introduce a second design system for the same product without a justified migration or boundary.
-3. Define semantic design tokens for recurring decisions such as color roles, typography, spacing, sizing, borders, elevation, and motion. Prefer semantic names over component-specific hard-coded values.
-4. Build components around consistent behavior, accessible semantics, clear variants, and explicit states. Keep APIs small and avoid speculative configurability.
-5. Document usage, variants, constraints, and accessibility behavior where consumers need that information.
-6. Make changes incrementally and migrate affected consumers coherently. Avoid broad visual rewrites unrelated to the request.
-7. Treat third-party design systems as references, not requirements. Select patterns that fit the product, platform, and existing stack.
+3. Reuse the current system where practical. Do not introduce a second design system for the same product without a justified migration or boundary.
+4. Define semantic design tokens for recurring decisions such as color roles, typography, spacing, sizing, borders, elevation, and motion. Prefer semantic names over component-specific hard-coded values.
+5. Build components around consistent behavior, accessible semantics, clear variants, and explicit states. Keep APIs small and avoid speculative configurability.
+6. Document usage, variants, constraints, and accessibility behavior where consumers need that information.
+7. Make changes incrementally and migrate affected consumers coherently. Avoid broad visual rewrites unrelated to the request.
+8. Treat third-party design systems as references, not requirements. Select patterns that fit the product, platform, and existing stack.
 
 ## Verification
 - Design-system decisions were checked before implementation and shared components/tokens were reviewed after implementation for consistency and unintended duplication.
