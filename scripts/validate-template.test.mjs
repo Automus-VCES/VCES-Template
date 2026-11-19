@@ -27,7 +27,7 @@ test("accepts a complete template with valid skills and internal links", async (
 
   assert.deepEqual(result.errors, []);
   assert.equal(result.requiredCount, REQUIRED_FILES.length);
-  assert.equal(result.skillCount, 16);
+  assert.equal(result.skillCount, 21);
 });
 
 test("requires the secure vibe coding checklist", async (t) => {
