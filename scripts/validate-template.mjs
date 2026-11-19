@@ -16,6 +16,7 @@ export const REQUIRED_SKILLS = Object.freeze([
   "security/infrastructure-security-skill.md",
   "security/supply-chain-security-skill.md",
   "security/ai-security-skill.md",
+  "security/threat-modeling-security-skill.md",
   "security/security-testing-skill.md",
   "security/incident-response-skill.md"
 ]);
@@ -28,7 +29,7 @@ export const REQUIRED_FILES = Object.freeze([
   "templates/SECURE-VIBE-CODING-CHECKLIST.md",
   "templates/adr/ADR-TEMPLATE.md", "docs/ADOPTION-GUIDE.md",
   "docs/ENGINEERING-HEALTH-CHECK.md", "docs/RELEASE-PROCESS.md",
-  "docs/GITHUB-SECURITY-CONFIGURATION.md",
+  "docs/GITHUB-SECURITY-CONFIGURATION.md", "docs/SECURITY-STANDARDS-MAPPING.md",
   "templates/workflows/node-ci.yml.example",
   "templates/workflows/python-ci.yml.example",
   "templates/workflows/flutter-ci.yml.example",
