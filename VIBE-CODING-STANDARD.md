@@ -78,7 +78,8 @@ Skills are optional focused references, not mandatory rituals. Read only relevan
 | `security/infrastructure-security-skill.md` | Cloud, network, DNS, runtime, hosting, containers |
 | `security/supply-chain-security-skill.md` | Dependencies, package scripts, CI/CD, build provenance |
 | `security/ai-security-skill.md` | LLMs, agents, tools, RAG, prompt injection |
-| `security/threat-modeling-security-skill.md` | New system/feature, trust boundaries, sensitive data, external integrations, material architecture changes |\n| `security/security-testing-skill.md` | Security test design, vulnerability lifecycle, scanning, remediation verification |
+| `security/threat-modeling-security-skill.md` | New system/feature, trust boundaries, sensitive data, external integrations, material architecture changes |
+| `security/security-testing-skill.md` | Security test design, vulnerability lifecycle, scanning, remediation verification |
 | `security/incident-response-skill.md` | Suspected compromise, containment, recovery |
 
 Load the smallest relevant set; do not load all skills by default. The canonical Standard takes precedence over skill guidance. Security severity and release decisions MUST follow Section 6.6; supporting skills MUST NOT introduce weaker or conflicting exception rules.
