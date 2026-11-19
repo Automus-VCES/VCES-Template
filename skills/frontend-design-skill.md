@@ -7,7 +7,8 @@ Guide AI agents to produce coherent, purposeful, responsive frontend interfaces 
 Use when creating or materially changing user-facing pages, components, layouts, visual styling, or interaction states. For backend-only changes, do not load this skill.
 
 ## Instructions
-1. Inspect the existing application, design system, components, assets, typography, and conventions before designing. Reuse established patterns unless there is a clear reason to change them.
+1. **Pre-implementation gate:** inspect the existing product and UI system; identify the target task, content hierarchy, visual direction, responsive behavior, and acceptance criteria before coding. Resolve material design ambiguity early; record decisions briefly in the task rather than creating process documents.
+2. Inspect the existing application, design system, components, assets, typography, and conventions before designing. Reuse established patterns unless there is a clear reason to change them.
 2. Understand the product purpose, target users, content, and primary tasks before choosing a visual direction.
 3. Define a coherent visual direction appropriate to the product. Specify hierarchy, layout, typography, color roles, spacing, density, and imagery intentionally.
 4. Prefer semantic, reusable components and existing design tokens. Avoid arbitrary one-off values and duplicated component styles.
@@ -19,6 +20,8 @@ Use when creating or materially changing user-facing pages, components, layouts,
 10. Follow the project framework and architecture. Do not introduce a new UI framework or dependency without a concrete need.
 
 ## Verification
+- The pre-implementation gate was completed before substantial UI implementation; important assumptions and design decisions are recorded.
+- The post-implementation gate includes rendered inspection at representative desktop and mobile sizes plus real interaction checks where the environment permits.
 - Existing design conventions and components are reused consistently.
 - Visual hierarchy and content support the primary task.
 - Layout works at representative narrow and wide viewports without unintended overflow.
