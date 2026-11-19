@@ -89,9 +89,26 @@ Skills are optional focused references, not mandatory rituals. Read only relevan
 
 Load the smallest relevant set; do not load all skills by default. The canonical Standard takes precedence over skill guidance. Security severity and release decisions MUST follow Section 6.6; supporting skills MUST NOT introduce weaker or conflicting exception rules.
 
-## 3.5 Audit finding format
+## 3.6 Audit finding format
 
 Each audit finding MUST include **Severity** (Critical/High/Medium/Low/Informational), **Finding**, **Evidence** (file/line, configuration, test, or reproducible observation), **Impact**, **Recommended fix**, and **Confidence/status** (Confirmed/Suspected/Not verified). Order by severity and impact. State audit scope and checks not run; never present suspicion as confirmed fact.
+
+## 3.5 UI/UX quality gates
+
+For material user-facing changes, agents MUST apply two lightweight gates. Scale the checks to the change; do not create separate documents or add tools unless they provide real value.
+
+**Before implementation — design gate**
+- Establish the target user/task, critical journey, content hierarchy, important interaction/error states, responsive expectations, and observable acceptance criteria.
+- Inspect and reuse the existing UI architecture, design system, components, and conventions. Identify the intended visual direction and applicable accessibility requirements.
+- Resolve material ambiguity or state assumptions explicitly. Keep the brief in the task or existing project notes; a standalone design document is not required.
+
+**After implementation — verification gate**
+- Inspect the actual rendered interface at representative narrow and wide viewports when a browser/rendering environment is available.
+- Exercise critical interactions and relevant states; check keyboard operation, visible focus, semantics, accessibility, overflow, visual consistency, and runtime/console errors as applicable.
+- Run proportionate UI tests and review the complete diff for regressions.
+- If rendering, assistive technology, or a required environment is unavailable, mark that check **not run** or **blocked**, explain why, and report the residual risk. Source review or successful compilation MUST NOT be described as visual verification.
+
+Tiny cosmetic changes MAY use a proportionate self-check. Backend-only changes are out of scope. Use `skills/ux-design-skill.md`, `skills/frontend-design-skill.md`, `skills/design-system-skill.md`, `skills/accessibility-skill.md`, and `skills/ui-quality-review-skill.md` only when their triggers apply.
 
 ## 4. Engineering lifecycle
 
