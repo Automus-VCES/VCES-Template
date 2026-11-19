@@ -12,6 +12,7 @@ All notable changes are recorded here. VCES uses Semantic Versioning for normati
 - Align security-testing release disposition with the canonical Critical/High severity policy and clarify vulnerability ownership, remediation, retesting, and closure.
 - Strengthen application security guidance for browser security headers, CSP, CORS, clickjacking protection, and credential storage.
 - Add threat-modeling skill routing and clarify that external standards mapping is informative rather than a blanket adoption mandate.
+- Extend repository validation to require the threat-modeling skill and security standards mapping, with regression coverage for the expanded skill set.
 
 
 ### Changed
