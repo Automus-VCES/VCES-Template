@@ -41,6 +41,11 @@ Open only relevant files. If the platform does not auto-load Markdown skills, ex
 - `skills/secure-development-skill.md`: baseline implementation; deepen for trust boundaries, auth, sensitive data, uploads, integrations, deployment.
 - `skills/testing-debugging-skill.md`: defects, behavior changes, regression, verification.
 - `skills/code-review-skill.md`: meaningful changes, security-sensitive work, pre-merge/release review.
+- `skills/ux-design-skill.md`: user journeys, navigation, information architecture, forms, onboarding.
+- `skills/frontend-design-skill.md`: user-facing pages, visual direction, responsive layouts, UI interactions.
+- `skills/design-system-skill.md`: shared tokens, reusable components, themes, cross-page consistency.
+- `skills/accessibility-skill.md`: user-facing UI, interactive components, accessibility audits.
+- `skills/ui-quality-review-skill.md`: UI audits, meaningful frontend changes, pre-release UI verification.
 
 ### Specialized security skill selection map
 Use only matching domain files; combine only when a task crosses domains:
