@@ -7,7 +7,8 @@ Maintain visual and interaction consistency through reusable tokens, components,
 Use when establishing or materially changing shared UI foundations, reusable components, themes, tokens, or cross-page consistency. For a one-off page that follows an established system, simply reuse the system.
 
 ## Instructions
-1. Inspect existing tokens, component libraries, styles, and usage patterns before adding or changing foundations.
+1. **Before implementation:** identify the existing source of truth for tokens, components, themes, and patterns; decide whether the change can reuse it. Define only the minimum tokens/components needed for a coherent result.
+2. Inspect existing tokens, component libraries, styles, and usage patterns before adding or changing foundations.
 2. Reuse the current system where practical. Do not introduce a second design system for the same product without a justified migration or boundary.
 3. Define semantic design tokens for recurring decisions such as color roles, typography, spacing, sizing, borders, elevation, and motion. Prefer semantic names over component-specific hard-coded values.
 4. Build components around consistent behavior, accessible semantics, clear variants, and explicit states. Keep APIs small and avoid speculative configurability.
@@ -16,6 +17,7 @@ Use when establishing or materially changing shared UI foundations, reusable com
 7. Treat third-party design systems as references, not requirements. Select patterns that fit the product, platform, and existing stack.
 
 ## Verification
+- Design-system decisions were checked before implementation and shared components/tokens were reviewed after implementation for consistency and unintended duplication.
 - Shared decisions use tokens or existing system primitives rather than duplicated arbitrary values.
 - Components have consistent APIs, semantics, variants, and states.
 - Existing consumers remain compatible or intentional changes are documented and tested.
