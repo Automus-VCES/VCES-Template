@@ -6,7 +6,7 @@ Translate a product goal into clear, usable, and testable user experiences. This
 ## When to use
 Use when creating or materially changing user-facing journeys, navigation, information architecture, forms, onboarding, or task flows. Skip for changes with no meaningful user-experience impact.
 
-## Instructions
+## Workflow
 1. Before implementation, establish a lightweight UX brief: target user/task, primary journey, key content, important states, and observable acceptance criteria. Keep it in the task or existing project notes; do not create a separate document unless useful.
 2. Identify the intended users, their primary goals, context of use, and the problem the change solves. Use supplied evidence; label assumptions rather than inventing research.
 3. Map the smallest set of critical user journeys and their entry, decision, success, cancellation, and recovery paths.
