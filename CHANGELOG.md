@@ -5,6 +5,9 @@ All notable changes are recorded here. VCES uses Semantic Versioning for normati
 ## [Unreleased]
 
 ### Changed
+- Make the VCES repository Markdown-first and documentation-only; remove repository CI/CD, workflow examples, scripts, validators, and automated release requirements while keeping automation optional for adopting software projects.
+
+### Changed
 - Add proportionate pre-implementation design and post-implementation UI/UX verification gates to reduce avoidable rework; clarify that unavailable visual/accessibility checks must be reported as not run or blocked.
 
 ### Added

@@ -193,9 +193,11 @@ Tests MUST be repeatable and relevant to risk. Include unit, integration, regres
 
 A high health score never overrides a failed mandatory gate. Exceptions require an authorized decision, rationale, compensating controls, owner, and review/expiry. The critical-vulnerability exception process in Section 6 does not authorize release during active compromise.
 
-## 10. Git, CI/CD, and supply chain
+## 10. Git, optional CI/CD, and supply chain
 
 Keep changes scoped, reviewable, and attributable. Protect stable branches with appropriate checks and review. Do not rewrite shared history, force-push, or delete branches/tags without authorization. Review the complete diff.
+
+**VCES repository implementation:** This repository is a Markdown-first documentation and standards library. It MUST NOT require GitHub Actions, CI/CD, scripts, validators, package manifests, build systems, or release automation to maintain or use the Standard. Use ordinary Git diffs and proportionate manual review. This repository-specific rule does not restrict adopting software projects from using automation when it provides meaningful assurance and can be maintained.
 
 CI and automated workflows are OPTIONAL for projects where their setup and maintenance provide meaningful repeatable assurance. When CI is used, it MUST run the checks the project relies on and report failures accurately. Workflows SHOULD use least-privilege permissions, reviewed immutable action SHAs for production-grade use, reproducible dependency installation, and safe handling of untrusted pull requests. Separate validation, release, and deployment permissions. Identify and retain release artifacts; use provenance/checksums where appropriate when risk warrants them. Production deployments and irreversible migrations require explicit authorization unless an approved automation policy says otherwise.
 
