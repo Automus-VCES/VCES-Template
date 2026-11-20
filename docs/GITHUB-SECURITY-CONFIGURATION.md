@@ -1,43 +1,44 @@
-# GitHub Security Configuration
+# Optional GitHub Security Guidance
 
-This document describes optional repository-maintenance controls and examples. It does not make any particular scanner, GitHub feature, or branch-protection rule a VCES adoption requirement.
+This document is an optional reference for software projects that use GitHub. It does not describe required infrastructure for the VCES repository and does not make any scanner, GitHub feature, CI workflow, or branch-protection rule a VCES adoption requirement.
 
-## 1. Workflow security analysis
+## 1. Decide whether automation is useful
 
-The VCES repository runs zizmor against its own GitHub Actions workflows on pull requests and pushes to the default branch. This is relevant because this repository maintains reusable workflow examples and CI configuration.
+Use GitHub automation only when it provides repeatable assurance that matters to the project and someone can maintain it. A small, single-maintainer, low-risk project may reasonably rely on focused manual review and testing.
 
-The check is a repository-maintenance safeguard, not a universal application security gate. Adopting projects should choose workflow analysis appropriate to their CI platform and risk.
+The VCES repository itself is Markdown-first and does not require GitHub Actions, CI/CD, scripts, or automated release tooling.
 
-## 2. Application security scanning
+## 2. Application security checks
 
-Application dependency, secret, container, and infrastructure scanning belongs to the adopting application where those assets exist. Choose tools based on the actual languages, lockfiles, deployment model, and threat model.
+Choose checks based on the application's actual stack, deployment model, and threat model:
 
-- Secret scanning is useful where credentials could be committed.
-- Dependency scanning is useful where the project has third-party packages.
-- Infrastructure/container scanning is useful where those assets are part of the project.
-- Dynamic testing is useful where a running application and safe test environment are available.
+- Secret scanning where credentials could be committed.
+- Dependency scanning where third-party packages are used.
+- Container or infrastructure scanning where those assets exist.
+- Static analysis and dynamic testing where they provide relevant coverage.
 
 A scanner is optional as a tool, but applicable security requirements are not optional. Use suitable manual or automated verification and record checks that were not run. A clean scan is not proof of security.
 
-## 3. Optional starter workflow
+## 3. Repository access controls
 
-`templates/workflows/security-gate.yml.example` is an optional example for application repositories. Review its scanners, supported files, severity thresholds, permissions, action pins, and failure behavior before adopting it. Do not copy it blindly or require it for projects where it adds no useful coverage.
+For collaborative repositories, owners may configure rulesets or branch protection to require review and selected validation checks, restrict force pushes, and prevent accidental deletion. Choose controls based on maintainer count, collaboration model, and risk.
 
-## 4. Optional GitHub repository settings
+These settings are not prerequisites for using VCES. Avoid imposing enterprise-grade controls on a personal repository without a concrete need.
 
-For collaborative repositories, owners may configure rulesets or branch protection to require review and selected validation checks, restrict force pushes, and prevent accidental deletion. The appropriate policy depends on maintainer count, collaboration model, and risk.
+## 4. Dependency Review
 
-These settings are not a prerequisite for using VCES. A single-maintainer experimental project may reasonably use a simpler workflow.
+GitHub Dependency Review may help identify vulnerable or disallowed dependency changes in supported repositories. Availability and capabilities depend on repository configuration and GitHub plan.
 
-## 5. Optional Dependency Review
+Enable it only when available and useful. It is not required by VCES.
 
-The Dependency Review action is conditional on `ENABLE_DEPENDENCY_REVIEW=true` and requires supported GitHub dependency graph / Advanced Security capability. Enable it only when available and useful. It is not required by VCES.
+## 5. Least-privilege practices
 
-## 6. Least-privilege practices
+When a project chooses to use GitHub Actions:
 
-When GitHub Actions are used:
 - Default workflow permissions to the minimum needed.
 - Grant permissions per job rather than broadly.
 - Use `persist-credentials: false` for checkout when later authenticated Git operations are not needed.
 - Pin third-party actions to reviewed immutable commit SHAs for production-grade workflows.
 - Do not grant `security-events: write` unless a workflow intentionally uploads SARIF and the repository supports it.
+- Keep validation, release, and deployment permissions separate.
+- Do not expose secrets to untrusted pull-request code.
