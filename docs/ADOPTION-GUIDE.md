@@ -1,6 +1,6 @@
 # VCES Adoption Guide
 
-Use VCES as the engineering standard for both building new applications and reviewing existing ones. Adopt the requirements that apply; do not turn the supporting materials into a mandatory project setup.
+Use VCES as the engineering Standard for both building new applications and reviewing existing ones. Adopt the requirements that apply; do not turn supporting materials into a mandatory project setup.
 
 ## 1. Start with the outcome
 
@@ -55,11 +55,11 @@ VCES Standard is the source of requirements. Instructions, skills, templates, ch
 - Use scanners appropriate to the application's stack and threat model; no particular scanner is universally required.
 - Treat checklists and health scores as aids, never as substitutes for engineering judgment or mandatory security controls.
 
-## 6. Templates and workflow examples
+## 6. Templates and optional tooling
 
-Templates and starter workflows are optional examples, not universal drop-ins. Copy only what the project will use and maintain. Customize commands, versions, permissions, and checks before use. Do not replace working architecture or CI merely to match an example.
+Templates are optional examples, not universal drop-ins. Copy only what the project will use and maintain. Customize each document to the project's actual requirements.
 
-This VCES repository validates its own required files, Markdown links, tests, and workflow YAML. That repository-maintenance automation is not a requirement imposed on every adopting project.
+Adopting projects may choose their own CI/CD workflows, scanners, or scripts when these provide useful repeatable assurance. VCES does not prescribe or distribute a mandatory automation toolchain.
 
 ## 7. Reassess when risk changes
 
