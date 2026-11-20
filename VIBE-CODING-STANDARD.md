@@ -1,6 +1,6 @@
 # Vibe Coding Engineering Standard (VCES)
 
-**Version:** 1.0.0 · **Status:** Initial baseline · **Scope:** Human-led, AI-assisted, and hybrid software engineering
+**Version:** 1.0.0 · **Status:** Personal-use release · **Release date:** 2026-11-20 · **Scope:** Human-led, AI-assisted, and hybrid software engineering
 
 ## 1. Purpose and authority
 
