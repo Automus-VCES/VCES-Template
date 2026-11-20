@@ -74,10 +74,13 @@ VCES does not prescribe a programming language, framework, hosting provider, arc
 
 ## Version and release status
 
-- **Current released standard:** 1.0.0
-- **Repository changes:** Additional guidance and changes are tracked under [Unreleased](CHANGELOG.md) until a versioned release is published.
+- **Current release:** `v1.0.0` — Personal-use release, finalized 2026-11-20.
+- **Scope:** The VCES Standard and its supporting guidance in this repository.
+- **Maintenance:** Future changes will be recorded under [Unreleased](CHANGELOG.md) and assigned a version when deliberately released.
 - **Versioning:** Normative standard releases follow Semantic Versioning. See the [manual release process](docs/RELEASE-PROCESS.md).
 
-## License
+This is a personal project release, not a public/open-source licensing grant. No license has been selected; see [LICENSE](LICENSE).
 
-Not yet selected. See [LICENSE](LICENSE) for the current status.
+## Validation status
+
+The release is documented and versioned in the repository. A real-world Build/Audit trial remains the next practical validation step; no claim is made that such a trial has already passed.
