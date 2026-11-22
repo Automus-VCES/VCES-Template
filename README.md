@@ -75,7 +75,9 @@ VCES does not prescribe a programming language, framework, hosting provider, arc
 ## Version and release status
 
 - **Current release:** `v1.0.0` — Personal-use release, finalized 2026-11-20.
+- **Proposed next release:** `v1.1.0` — focused security refinement; pending review and publication.
 - **Scope:** The VCES Standard and its supporting guidance in this repository.
+- **Latest refinement:** Production runtime inventory/advisory assessment, vulnerability remediation ownership, and post-update verification.
 - **Maintenance:** Future changes will be recorded under [Unreleased](CHANGELOG.md) and assigned a version when deliberately released.
 - **Versioning:** Normative standard releases follow Semantic Versioning. See the [manual release process](docs/RELEASE-PROCESS.md).
 
