@@ -6,7 +6,7 @@ All notable changes are recorded here. VCES uses Semantic Versioning for normati
 
 No unreleased changes.
 
-## [1.0.1] - 2026-11-22
+## [1.1.0] - Proposed 2026-11-22 (pending review and publication)
 
 Focused security refinement; existing architecture, skills structure, and Markdown-first maintenance model are unchanged.
 
