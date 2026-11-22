@@ -1,6 +1,6 @@
 # Vibe Coding Engineering Standard (VCES)
 
-**Version:** 1.0.0 · **Status:** Personal-use release · **Release date:** 2026-11-20 · **Scope:** Human-led, AI-assisted, and hybrid software engineering
+**Version:** 1.0.1 · **Status:** Personal-use release · **Release date:** 2026-11-22 · **Scope:** Human-led, AI-assisted, and hybrid software engineering
 
 ## 1. Purpose and authority
 
@@ -169,12 +169,16 @@ Security MUST be considered throughout design, implementation, review, and opera
 - Databases, caches, queues, control panels, debug interfaces, and internal services MUST NOT be exposed to public networks unless explicitly required, isolated, authenticated, monitored, and approved.
 - Non-standard ports, hidden URLs, CORS restrictions, or obscurity MUST NOT substitute for network isolation and authentication.
 - Production MUST disable debug mode and default credentials, restrict management access, apply supported security updates, and use secure transport and session settings.
+- Production systems MUST maintain a proportionate inventory of externally reachable and security-critical runtime components, including applicable web servers, reverse proxies, ingress controllers, container/base images, operating systems, and kernels. Record enough identity and version information to determine whether a vendor advisory affects the deployed component; assign an owner where operationally appropriate.
+- Teams MUST monitor relevant vendor security advisories and assess applicability to deployed components based on exact product/version, configuration, exposure, and available mitigations. Unsupported or end-of-life components MUST have an approved migration or risk-reduction plan.
 - DNS records and external resources MUST be reviewed during decommissioning; remove stale records and release cloud/hosting resources safely to prevent dangling-resource takeover.
 - Security logging MUST avoid credentials and sensitive payloads. Define alerting and incident response appropriate to exposure and impact.
 
 ### 6.6 Security verification and release disposition
 - Security-sensitive changes MUST include focused negative tests for denied access, invalid input, unsafe uploads, prohibited network destinations, and secret leakage as applicable.
 - Use suitable static analysis, dependency and secret scanning, configuration checks, and dynamic tests proportionate to project risk. A scan or checklist is evidence of a check, not proof of security.
+- Every confirmed vulnerability MUST have a recorded severity, affected component/version, evidence, accountable owner, remediation target appropriate to risk, and status. Prioritize using exploitability, impact, exposure, and available mitigations. If remediation is deferred, document the rationale, compensating controls, authorized risk decision, and review date; do not silently leave findings unowned.
+- After remediation or a security update, teams MUST verify that the intended fixed version/configuration is actually active in the deployed environment and that the affected exposure or behavior is corrected. Restart, reload, or redeploy components when required for the fix to take effect. Assess OS/kernel updates separately from application and proxy updates; a patched application does not establish that the host is patched.
 - An unresolved critical vulnerability or active compromise blocks routine release. A critical vulnerability may proceed only under a formally approved incident/risk process with an accountable decision owner, documented impact, compensating controls, explicit scope, and review/expiry; active compromise requires incident response and is not eligible for an ordinary release exception. High-severity findings require documented assessment and authorized disposition. Threat modeling MUST be performed for material changes involving new trust boundaries, sensitive data flows, privileged operations, external integrations, or significant exposure changes; use a lightweight review for low-risk changes. Record assets, entry points, trust boundaries, key abuse cases, mitigations, and residual risks.
 - The [Security Standards Mapping](docs/SECURITY-STANDARDS-MAPPING.md) is an informative crosswalk to established references, not a blanket requirement to implement every control in every project.
 - The [Secure Vibe Coding Checklist](templates/SECURE-VIBE-CODING-CHECKLIST.md) provides a practical adoption aid; it does not replace project-specific threat analysis or verification.
