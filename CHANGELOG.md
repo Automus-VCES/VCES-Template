@@ -6,6 +6,16 @@ All notable changes are recorded here. VCES uses Semantic Versioning for normati
 
 No unreleased changes.
 
+## [1.0.1] - 2026-11-22
+
+Focused security refinement; existing architecture, skills structure, and Markdown-first maintenance model are unchanged.
+
+### Changed
+- Strengthen Section 6.5 with proportionate inventory and vendor-advisory assessment for externally reachable and security-critical production runtime components, including web servers, proxies, ingress, container/base images, operating systems, and kernels.
+- Strengthen Section 6.6 with vulnerability ownership, remediation targets, documented risk disposition, and post-remediation verification that the intended fix is active in production.
+- Clarify that host OS/kernel patch status must be assessed separately from application, proxy, and container updates.
+- Extend the Infrastructure Security Skill with runtime inventory, advisory triage, patch verification, and independent host/kernel checks.
+
 ## [1.0.0] - 2026-11-20
 
 Personal-use release. This release consolidates the initial baseline (first published 2026-11-11) and the refinements finalized for the VCES v1 standard.
